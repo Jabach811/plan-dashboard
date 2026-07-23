@@ -687,3 +687,27 @@ Add-Content $logPath $text -Encoding UTF8
 Write-Host $text
 Write-Host "wrote $outPath"
 
+try {
+    Push-Location $root
+    $ErrorActionPreference = 'Continue'
+    $porcelain = git status --porcelain
+    if ($LASTEXITCODE -eq 0 -and $porcelain) {
+        git add -A -- ':!extracts' ':!data/corpus.csv' ':!.backups' ':!logs' ':!studies' ':!nbi-tracker' ':!.claude' | Out-Null
+        $staged = git status --porcelain
+        if ($staged) {
+            git commit -q -m "Refresh dashboard $(Get-Date -Format 'yyyy-MM-dd HH:mm')" | Out-Null
+            git push -q
+            if ($LASTEXITCODE -eq 0) {
+                Write-Host "published to https://jabach811.github.io/plan-dashboard/"
+            } else {
+                Write-Warning "git push failed -- dashboard built locally but not published"
+            }
+        }
+    }
+} catch {
+    Write-Warning "auto-publish skipped: $_"
+} finally {
+    $ErrorActionPreference = 'Stop'
+    Pop-Location
+}
+
