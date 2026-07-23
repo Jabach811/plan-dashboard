@@ -10,9 +10,9 @@
     "client": "Seth Winnerman, Drew",
     "golive": "Jul 2, 2026",
     "cap": "Live · Jul 2",
-    "cardNote": "both files errored 7/21",
-    "cardText": "The EDS layout fix didn't stick and both 7/21 files are sitting in error. Client hasn't replied to the offer of a call.",
-    "headline": "Live since 7/2 and handed to Marcos, with inbound payroll file testing the only thing still open — and it is not going well. The 7/21 load hit the same error as 7/16 because the EDS layout updates were not saved. Both files are now in One Payroll in Errored status, Jocelyn has told the client and offered a call with no reply, and Lucy at UKG is out until 7/27. Auto-sweep is also off the table until two or three files land cleanly, so the client will have to submit control totals after all.",
+    "cardNote": "payroll files loaded 7/21",
+    "cardText": "Live and handed to Marcos; the only thing still moving is payroll file automation. The 7/21 load repeated the 7/16 error until Joel stayed on the layout and got both files into One Payroll, and outbound files are still being reviewed by hand until 7/27.",
+    "headline": "Live since 7/2 and handed to Marcos, with inbound payroll file automation the only thing still in flight. The 7/21 load first hit the same error as 7/16 because the EDS layout updates had not saved; Joel stayed connected until Daniel Amato dropped both files into One Payroll, where they landed in Errored status. Seth still owes total confirmation — on 7/21 he said the data looked strange against the UKG spreadsheets and that 7/20 dates were missing where six people should show updates. Lucy at UKG is out until 7/27, and auto-sweep is off the table until two or three files arrive clean, so the client submits control totals in the meantime. On the outbound side, PIS is still reviewing each deferral/loan file by hand — the 7/20 file and the next one on 7/27 both go manually before automation is switched on.",
     "open": [
       {
         "task": "Find out why the EDS layout updates were not saved",
@@ -129,7 +129,7 @@
       },
       {
         "task": "Resolve rehire date = hire date and gender code",
-        "note": "Raised 7/14 and chased again 7/15 on the UKG test file. Sits alongside the hours problem as a file-content item rather than a layout one.",
+        "note": "Raised 7/14 and chased again 7/15 on the UKG test file. Lucy fixed the rehire dates but says the gender code is a data error the client's team must correct in UKG, and termination dates for rehires can't be pulled from UKG at all — the school has to supply them.",
         "who": "UKG",
         "src": [
           {
@@ -358,9 +358,15 @@
       },
       {
         "d": "Jul 20",
-        "t": "Content testing likely passed",
-        "n": "Jocelyn's read is that only the layout remains; asked Joel to pull the 7/21 file and decide test vs. production.",
+        "t": "Hours field removed; content testing likely passed",
+        "n": "Joel removed the hours field from the layout. Jocelyn's read is that only the layout remains and asked him to pull the 7/21 file and decide test vs. production.",
         "src": [
+          {
+            "d": "2026-07-20",
+            "from": "Abacherli",
+            "subj": "RE: International School of Denver - file results form 7/8/2026",
+            "q": "I removed the hours field from the layout"
+          },
           {
             "d": "2026-07-20",
             "from": "Biondo",
@@ -382,6 +388,38 @@
             "d": "2026-07-20",
             "from": "Lucy Vasquez",
             "subj": "Re: International School of Denver TA069932-00056 first inbound and outbound files"
+          }
+        ]
+      },
+      {
+        "d": "Jul 21",
+        "t": "Both 7/21 files loaded to One Payroll, errored",
+        "n": "The first attempt repeated the 7/16 error until Joel updated the layout again and stayed connected. Daniel Amato then dropped both files in; both landed Errored under confirmation codes 6839255409367895 and 8641263058477553.",
+        "src": [
+          {
+            "d": "2026-07-21",
+            "from": "Abacherli",
+            "subj": "RE: Loading Payroll Files - TA069932-00056 [TLS]",
+            "q": "I'm going to stay connected to this"
+          },
+          {
+            "d": "2026-07-21",
+            "from": "Payroll Support",
+            "subj": "RE: Loading Payroll Files - TA069932-00056 [TLS]",
+            "q": "both files are in an Errored status"
+          }
+        ]
+      },
+      {
+        "d": "Jul 23",
+        "t": "Outbound files still reviewed by hand pre-automation",
+        "n": "Sara Bergan confirmed the 7/20 deferral/loan file was manually reviewed and uploaded via SFTP, and the next one on 7/27 will be too before automation is turned on Transamerica's side.",
+        "src": [
+          {
+            "d": "2026-07-23",
+            "from": "Bergan",
+            "subj": "RE: UKG - International School of Denver TA069932-00056 - Test file",
+            "q": "The 7/20 file was manually reviewed"
           }
         ]
       }
@@ -456,8 +494,8 @@
     "golive": "Jul 13, 2026",
     "cap": "Live · Jul 13",
     "cardNote": "closed out 7/16",
-    "cardText": "Live and closed out. Two data questions are still yours — installments and the eight bad eligibility dates.",
-    "headline": "Live as of 7/13 and closed out with a final recap on 7/16. The client uploaded their first funding file for the 7/15 payroll with Jennifer Dowling walking them through it, e-delivery went active 7/17 and the enrollment kit hold is lifted. What is left is clean-up, but two pieces of it are data corrections on your side.",
+    "cardText": "Live and closed out. The one piece still yours is confirming there are no installment payments before the post-conversion file is sealed.",
+    "headline": "Live as of 7/13 and closed out on Lexi's final recap 7/16. The client uploaded their first funding file for the 7/15 payroll with Jennifer Dowling walking them through it, e-delivery went active 7/17 and the enrollment kit hold is lifted. What is left is clean-up: Sarrah found no installment payments and needs your confirmation before the file is sealed, and the remaining document tasks (SPDs off hold, the conversion summary report) sit with the Transamerica side.",
     "open": [
       {
         "task": "Confirm whether any installment payments exist on the plan",
@@ -524,47 +562,6 @@
     ],
     "history": [
       {
-        "d": "Jul 13",
-        "t": "Go-live confirmed",
-        "n": "Outsourcing and DDOL/VRU controls active, loan default logic on, deferral elections enabled. Enrollment kit hold lifted the same afternoon — nothing was queued to mail.",
-        "src": [
-          {
-            "d": "2026-07-13",
-            "from": "Morton",
-            "subj": "Bonnier Corporation QK63283-00105 Go-Live Confirmation"
-          },
-          {
-            "d": "2026-07-13",
-            "from": "Bertorelli",
-            "subj": "RE: Bonnier Corporation QK63283-00105 Go-Live Confirmation"
-          }
-        ]
-      },
-      {
-        "d": "Jul 13",
-        "t": "First funding file uploaded by the client",
-        "n": "Tara loaded the 7/15 payroll herself on the sponsor site with Jennifer walking her through it — the manual-upload arrangement works, which matters because ADP has no 360 integration here.",
-        "src": [
-          {
-            "d": "2026-07-13",
-            "from": "Tara Bisciello",
-            "subj": "Re: Bonnier QK63283 00105 Plan Sponsor site and One Payroll"
-          }
-        ]
-      },
-      {
-        "d": "Jul 17",
-        "t": "E-delivery activated",
-        "n": "Lindsay turned it on off the back of the final recap.",
-        "src": [
-          {
-            "d": "2026-07-17",
-            "from": "Loglisci",
-            "subj": "RE: Bonnier Corporation (QK63283-00105)- Post Conversion-Final Recap"
-          }
-        ]
-      },
-      {
         "d": "Jun 3",
         "t": "Census loaded and elections defaulted",
         "n": "Cash conversion from Fidelity — all employees defaulted, with 2 duplicate SSNs flagged to a tracking file.",
@@ -591,7 +588,7 @@
       {
         "d": "Jul 9",
         "t": "Loans and deferrals loaded",
-        "n": "Danny created loan coupons for the one terminated participant, since the plan permits terminated participants to keep repaying.",
+        "n": "Danny ran the takeover loan analysis clean and created loan coupons for the one terminated participant, since the plan permits terminated participants to keep repaying. Deferrals loaded with all participants out of default.",
         "src": [
           {
             "d": "2026-07-09",
@@ -599,10 +596,10 @@
             "subj": "Bonnier Corporation - QK63283/00105 - DC status update"
           },
           {
-            "d": "2026-07-09",
+            "d": "2026-07-13",
             "from": "Bertorelli",
             "subj": "RE: Bonnier Corporation - QK63283/00105 - DC status update",
-            "q": "Sorry, one more question, your audit pac"
+            "q": "since the plan allows terminated partici"
           }
         ]
       },
@@ -627,44 +624,75 @@
       },
       {
         "d": "Jul 13",
-        "t": "Plan live — go-live confirmation issued",
-        "n": "Outsourcing and DDOL/VRU controls active, outbound file notifications set for Tara and Debbie, loan default logic and deferral elections enabled.",
+        "t": "Basis loaded",
+        "n": "Hardship Basis and Roth first-contribution dates were still outstanding when Sarrah flagged them; Joel loaded them the same morning, clearing the last data item before go-live.",
+        "src": [
+          {
+            "d": "2026-07-13",
+            "from": "Abacherli",
+            "subj": "Bonnier Corporation - QK63283/00105 - DC status update",
+            "q": "Basis loaded"
+          },
+          {
+            "d": "2026-07-13",
+            "from": "Morton",
+            "subj": "RE: Bonnier Corporation - QK63283/00105 - DC status update",
+            "q": "Hardship Basis and Roth first contributi"
+          }
+        ]
+      },
+      {
+        "d": "Jul 13",
+        "t": "Go-live confirmed",
+        "n": "Outsourcing and DDOL/VRU controls active, outbound file notifications set for Tara and Debbie, loan default logic and deferral elections enabled. The enrollment kit hold was lifted the same afternoon — nothing was queued to mail.",
         "src": [
           {
             "d": "2026-07-13",
             "from": "Morton",
             "subj": "Bonnier Corporation QK63283-00105 Go-Live Confirmation"
+          },
+          {
+            "d": "2026-07-13",
+            "from": "Bertorelli",
+            "subj": "RE: Bonnier Corporation QK63283-00105 Go-Live Confirmation"
           }
         ]
       },
       {
         "d": "Jul 13",
         "t": "Client uploaded first funding file",
-        "n": "Tara submitted the 7/15 payroll funding file with Jennifer Dowling on the call — a clean first run.",
+        "n": "Tara loaded the 7/15 payroll herself on the sponsor site with Jennifer Dowling walking her through it — the manual-upload arrangement works, which matters because ADP has no 360 integration here.",
         "src": [
-          {
-            "d": "2026-07-13",
-            "from": "Dowling",
-            "subj": "RE: Bonnier QK63283 00105 Plan Sponsor site and One Payroll"
-          },
           {
             "d": "2026-07-13",
             "from": "Tara Bisciello",
             "subj": "Re: Bonnier QK63283 00105 Plan Sponsor site and One Payroll",
             "q": "thank you for your assistance this afte"
+          },
+          {
+            "d": "2026-07-13",
+            "from": "Dowling",
+            "subj": "RE: Bonnier QK63283 00105 Plan Sponsor site and One Payroll"
           }
         ]
       },
       {
         "d": "Jul 16",
         "t": "Post-conversion final recap circulated",
-        "n": "Lexi's close-out email assigning the last tasks; e-delivery confirmed active by Lindsay the next day.",
+        "n": "Lexi's close-out email assigning the last tasks — SPDs off hold, e-delivery, and the conversion summary report due 7/31.",
         "src": [
           {
             "d": "2026-07-16",
             "from": "Westenskow",
             "subj": "Bonnier Corporation (QK63283-00105)- Post Conversion-Final Recap"
-          },
+          }
+        ]
+      },
+      {
+        "d": "Jul 17",
+        "t": "E-delivery activated",
+        "n": "Lindsay turned it on off the back of the final recap.",
+        "src": [
           {
             "d": "2026-07-17",
             "from": "Loglisci",
@@ -688,7 +716,7 @@
       },
       {
         "t": "Hours loaded by equivalency, approved by client",
-        "n": "Years of service drives vesting. When the client can't supply YOS directly, an equivalency method is permitted — used here with sign-off.",
+        "n": "Years of service drives vesting. When the client can't supply YOS directly, an equivalency method is permitted — used here with sign-off (45 hours/week, 95 hours/semi-monthly).",
         "src": [
           {
             "d": "2026-07-10",
@@ -734,13 +762,13 @@
     "com": "Damien Hurm",
     "client": "Christina Zajac, Annette Ruchwa",
     "golive": "Live — payroll automation still in test",
-    "cardNote": "reversal agreed 7/22",
-    "cardText": "The prior remittance gets reversed. The going-forward source problem is now a standoff with the client, and Annette wants a call this week.",
-    "headline": "The biggest and messiest case in the book — over 1,100 emails across four plans. The long-running remittance error finally broke on 7/22: Treva confirmed the prior postings will be reversed after her call with Bernie and Diane. That leaves the forward-looking half, and it has become a disagreement rather than a task — Transamerica says the client's payroll must designate in-service versus retirement, and Christina says Dayforce has never done that because the recordkeeper always allocated it. Annette has asked for a call this week, and separately Dave Borwick has flagged rates of return as urgent.",
+    "cardNote": "group call 7/23",
+    "cardText": "The prior remittance is being reversed; the going-forward source designation is now a client-vs-Transamerica standoff headed to a group call, with Dave compiling one email of the open items.",
+    "headline": "The biggest and messiest case in the book — over 1,200 emails across four plans. On the money side: the long-running remittance error broke Treva's way on 7/22 — the incorrect prior postings will be reversed after her call with Bernie and Diane — but the going-forward source problem is now a standoff, with Transamerica saying the client's Dayforce file must designate in-service versus retirement and Christina insisting Dayforce has never done that because the recordkeeper always allocated it. As of 7/23 the group is meeting on it and Dave Borwick is compiling a single email of the open items, including an urgent rates-of-return display defect Barnabas has ticketed. On payroll automation: the NQ98507 mapping is approved by Transamerica and waiting only on the client's production sign-off, while the mid-market 401(k) 518203 test file still can't pass until paid-off loans stop being reported and Dayforce confirms them.",
     "open": [
       {
         "task": "Settle who assigns the in-service versus retirement source",
-        "note": "Michelle Orsini's money is arriving as 2026 In-Service EE and ER when it should be 2026 Retirement EE and ER. Treva says the client and payroll provider have to fix it; Christina says Dayforce doesn't designate the bucket at all and John Hancock always allocated it from the file. Both can't be true, and Treva's own question is unanswered — if the client isn't designating, why is everyone else posting correctly?",
+        "note": "Michelle Orsini's money is arriving as 2026 In-Service EE and ER when it should be 2026 Retirement EE and ER; on 7/23 Damien extended the list to Jamie Perry and Susan Salecky and asked Christina to have Dayforce fix it from the first August payroll. Christina counters that Dayforce doesn't designate the bucket at all and John Hancock always allocated it from the file. Both can't be true, and Treva's own question is unanswered — if the client isn't designating, why is everyone else posting correctly? Damien has punted it to the 7/23 group call, which he frames as a TRS-vs-KeyBank issue.",
         "who": "Christina Zajac · Treva",
         "src": [
           {
@@ -754,17 +782,23 @@
             "subj": "RE: [Secure] COCC, Inc. NQ98507 - Payroll Corrections. [ZSecure]"
           },
           {
-            "d": "2026-07-21",
-            "from": "Guyer",
-            "subj": "RE: [Secure] COCC, Inc. NQ98507 - Payroll Corrections. [ZSecure]",
-            "q": "how are the other ppts showing correctly"
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "COCC, Inc. NQ98507 - Payroll Corrections",
+            "q": "two employees with contributions being posted to 2026 Retirement Account"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "COCC, Inc. NQ98507 - Payroll Corrections",
+            "q": "between TRS & KeyBank"
           }
         ]
       },
       {
         "task": "Get Annette the call she has asked for",
-        "note": "She chased on 7/20 after PTO, then again on 7/21 — the issue has been open for months and she wants it addressed this week. Damien has said twice that someone will be in touch when they know more, which is not an answer to a request for a meeting.",
-        "who": "Damien Hurm",
+        "note": "She chased on 7/20 after PTO, then again on 7/21 — the issue has been open for months and she wants it addressed this week. As of 7/23 Damien told Dave he may not need to update Annette separately, since Dave is bundling this into one email covering the open items from the group's 7/22 meeting.",
+        "who": "Damien Hurm · Dave",
         "src": [
           {
             "d": "2026-07-21",
@@ -775,24 +809,42 @@
             "d": "2026-07-20",
             "from": "Ruchwa",
             "subj": "RE: NQ98507 - Contributions Source Inquiry"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "RE: [Secure] RE: NQ98507 - Contributions Source Inquiry",
+            "q": "you're putting together an email related to the open items"
           }
         ]
       },
       {
         "task": "Resolve the rates of return question",
-        "note": "Dave Borwick marked it URGENT on 7/22 off the back of Cy's email and asked for it as soon as possible. Nothing in the thread says what the discrepancy is yet.",
-        "who": "Team",
+        "note": "Dave Borwick marked it URGENT on 7/22 off Cy's email. By 7/23 it had resolved to a display defect: the rate of return shows fine on Annette Ruchwa's account and Damien's own, but reads 'NA' on the Financial Overview / landing page in the web and mobile app. This is a Plan Sponsor Site defect, not conversion work — Barnabas White has submitted an SPO ticket and his manager escalated it, so it sits with the tech team, not Joel.",
+        "who": "Barnabas White · tech team",
         "src": [
           {
             "d": "2026-07-22",
             "from": "Borwick",
             "subj": "URGENT: COCC Rates of Return"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Pittinger",
+            "subj": "URGENT: COCC Rates of Return",
+            "q": "Financial Overview page or sometimes called the Landing Page"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "White",
+            "subj": "URGENT: COCC Rates of Return",
+            "q": "I submitted a SPO ticket yesterday, and my manager escalated it"
           }
         ]
       },
       {
         "task": "Document the correction process so it isn't personality-dependent",
-        "note": "Damien said plainly on 7/21 and again 7/22 that he can't explain what needs correcting on the prior files or the fix he asked the client for, and Michelle Perry says the NQ team isn't involved in payroll at all and guessed at the remit team. Three people have now been asked and none of them owns the procedure. That gap is why this ran for months.",
+        "note": "Damien said plainly on 7/21 and again 7/22 that he can't explain what needs correcting on the prior files or the fix he asked the client for, and Michelle Perry says the NQ team isn't involved in payroll at all and guessed at the remit team, pinging Joel and Treva directly for where to go next. Three people have now been asked and none of them owns the procedure. That gap is why this ran for months.",
         "who": "Joel · Treva",
         "mine": true,
         "src": [
@@ -829,7 +881,7 @@
       },
       {
         "task": "Approve Dayforce production deployment for NQ98507",
-        "note": "Joel confirmed on 7/7 that the last test file was in good order and consistent with what Christina has been uploading manually for months. Melanie has asked twice for sign-off; Christina is waiting to speak to Annette when she's back from PTO.",
+        "note": "Joel confirmed on 7/7 that the last test file was in good order and consistent with what Christina has been uploading manually for months, and Transamerica is done on its side. Melanie chased the sign-off again on 7/23; Christina is holding it until she can speak to Annette, then acknowledged the update. Nothing moves to live NQ files until this lands.",
         "who": "Christina Zajac",
         "src": [
           {
@@ -839,28 +891,22 @@
           },
           {
             "d": "2026-07-17",
-            "from": "Melanie Joy Banga",
-            "subj": "Production Deployment / NQ98507 /Connecticut On-Line Computer Center, Inc / 12940227",
-            "q": "tina.zajac@cocc.com <mailto:christina.za"
-          },
-          {
-            "d": "2026-07-17",
             "from": "Zajac",
             "subj": "Production Deployment / NQ98507 /Connecticut On-Line Computer Center, Inc / 12940227"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Melanie Joy Banga",
+            "subj": "Production Deployment / NQ98507",
+            "q": "gentle follow up on the approval"
           }
         ]
       },
       {
         "task": "Resend 518203 test file without the paid-off loan payments",
-        "note": "The mid-market 401(k) test file keeps failing validation because it includes repayments for loans that have already been paid off, which the system won't accept. Melanie will backfill Dayforce production data into the test site and resend.",
+        "note": "The mid-market 401(k) test file keeps failing validation because it includes repayments for loans that have already been paid off, which the system won't accept. As of 7/23 Melanie is holding the resend until the loan-payoff data is confirmed fixed, then will backfill Dayforce production data into the test site and send a fresh test.",
         "who": "Melanie Banga",
         "src": [
-          {
-            "d": "2026-07-17",
-            "from": "Hurm",
-            "subj": "COCC, Inc. / Dayforce File to Transamerica (518203 & NQ98507) JIR CDL-1555",
-            "q": "Good Morning Everyone, ~ ~ Please see be"
-          },
           {
             "d": "2026-07-17",
             "from": "Hurm",
@@ -868,16 +914,17 @@
             "q": "Melanie – I believe once the loan paymen"
           },
           {
-            "d": "2026-07-17",
+            "d": "2026-07-23",
             "from": "Melanie Joy Banga",
-            "subj": "COCC, Inc. / Dayforce File to Transamerica (518203 & NQ98507) JIR CDL-1555"
+            "subj": "Dayforce File to Transamerica",
+            "q": "I'll do a backfill as soon as we have the confirmation that the loans issue is resolved"
           }
         ]
       },
       {
         "task": "Verify loan payoffs appear on the reverse feed to Dayforce",
-        "note": "COCC isn't receiving paid-off loans back on the TA outbound file. A conversion loan indicator was updated and the team believes it's fixed, but it can't be proven until the next real payoff occurs.",
-        "who": "Damien · PayStart",
+        "note": "COCC isn't receiving paid-off loans back on the TA outbound file, so participants keep having loan payments withheld after payoff. A conversion loan indicator was updated and PayStart is checking whether the next change report carries the payoff. On 7/23 Damien sent the full list of conversion loans paid off since conversion and asked the Dayforce side to confirm each shows 'paid in full'; Kevin Jacobson replied that's Christina's call and offered to run the paid-off loan compare.",
+        "who": "Damien · Christina · Kevin",
         "src": [
           {
             "d": "2026-07-17",
@@ -886,15 +933,22 @@
             "q": "Good Morning Everyone, ~ ~ Please see be"
           },
           {
-            "d": "2026-07-17",
-            "from": "Paystart Support",
-            "subj": "COCC, Inc. / Dayforce File to Transamerica (518203 & NQ98507) JIR CDL-1555"
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "Dayforce File to Transamerica",
+            "q": "all conversion loans paid off since the plan has been here with Transamerica"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Jacobson",
+            "subj": "Dayforce File to Transamerica",
+            "q": "That's really a decision for"
           }
         ]
       },
       {
         "task": "Confirm 2026 deferred comp enrollments are correct in participant accounts",
-        "note": "Annette has been chasing this for weeks with John Hancock's election report in hand. Michelle can't complete her full plan audit — including distribution elections — until the source corrections are done.",
+        "note": "Annette has been chasing this for weeks with John Hancock's election report in hand. Michelle Perry can't complete her full plan audit — including distribution elections — until the source corrections are done.",
         "who": "Damien · Michelle",
         "src": [
           {
@@ -912,6 +966,19 @@
     ],
     "history": [
       {
+        "d": "Jul 23",
+        "t": "Dave to compile one email of the open items",
+        "n": "After the group met on 7/22, Dave Borwick is bundling the payroll reversals, the going-forward source designation and the rates-of-return defect into a single email, so Damien held off on separate updates to the client.",
+        "src": [
+          {
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "RE: [Secure] RE: NQ98507 - Contributions Source Inquiry",
+            "q": "you're putting together an email related to the open items"
+          }
+        ]
+      },
+      {
         "d": "Jul 22",
         "t": "Prior remittance to be reversed",
         "n": "Treva confirmed after her morning call with Bernie and Diane that the incorrect postings on the earlier payrolls will be reversed. That closes the half of this that Transamerica controls; only the going-forward file remains.",
@@ -924,14 +991,28 @@
         ]
       },
       {
-        "d": "Jul 22",
-        "t": "Test note filed to the plan folder",
-        "n": "Your note on the payroll corrections thread, body \"Just testing\" — no content to carry into the narrative. Recorded here only so it isn't mistaken for a missing record.",
+        "d": "Jun 16",
+        "t": "Cost basis loaded for all three NQ plans",
+        "n": "After the group agreed the advisor's numbers weren't in the final valuation files, Joel imported the cost basis for NQ98506/507/508; backup filed on the V: drive.",
         "src": [
           {
-            "d": "2026-07-22",
+            "d": "2026-06-16",
             "from": "Abacherli",
-            "subj": "FW: [Secure] COCC, Inc. NQ98507 - Payroll Corrections"
+            "subj": "Cost Basis Inquiry",
+            "q": "Cost Basis has been loaded for all 3 plans"
+          }
+        ]
+      },
+      {
+        "d": "Jun 27",
+        "t": "April/May cost basis values flagged for review",
+        "n": "Working with Rob Coccaro and David Julian, the initial load was corrected to a 3/6 effective date across all three plans, but the April and May average unit values looked potentially inaccurate and can't be validated until the source and methodology behind them are understood. No follow-up in the thread since — worth confirming this is resolved.",
+        "src": [
+          {
+            "d": "2026-06-27",
+            "from": "Abacherli",
+            "subj": "March Cost Basis information COCC",
+            "q": "additional review is needed for the April and May values"
           }
         ]
       },
@@ -1140,9 +1221,9 @@
     "client": "Tricia Cooper, Beth Elletson, Abby Morrow",
     "golive": "Jun 29, 2026",
     "cap": "Live · Jun 29",
-    "cardNote": "deferral audit running",
-    "cardText": "Aaron is reconstructing how deferrals and default status were set. Every question in that thread points at you.",
-    "headline": "Live since 6/29 and handed to Aaron Jones, but the post-go-live picture has got worse rather than better. On 7/20 the client raised auto-enrolment and deferral-increase problems, and a plan entry date issue means participant deferrals are not transmitting back to them at all. Since 7/21 this has turned into a full audit of the deferral load — where the mapping data came from, who should be in default and at what percentage — and every question in it is addressed to you. Tawnya's own summary is that the conversion was clunky, with census problems and bad payroll data throughout.",
+    "cardNote": "deferral audit closing out",
+    "cardText": "Aaron ran a post-go-live audit of how deferrals and default status were set. You supplied the source file and the backing detail; the reconciliation is being closed.",
+    "headline": "Live since 6/29 and handed to Aaron Jones, but a post-go-live audit of the deferral load developed through mid-July after the client began receiving deferral-discrepancy reports and believed deferrals weren't loaded. You supplied the source deferral file, identified Sheet1 as the tab actually loaded, and looped Earl in; Tawnya assembled the supporting chains and confirmed the prior-plan auto-enrolment setup. The substantive finding is a plan-entry-date mismatch — participants loaded in default before 06/01/26 against a 02/26 entry date — which stops deferrals transmitting back to the client. Tawnya's own read is that the conversion was clunky, with census and payroll-file problems throughout.",
     "open": [
       {
         "task": "Say where the deferral mapping data came from and who should be in default",
@@ -1260,6 +1341,23 @@
         ]
       },
       {
+        "d": "Jul 20",
+        "t": "Sheet1 confirmed as the loaded tab",
+        "n": "Aaron asked which of the many tabs in the source file was actually used; you confirmed Sheet1 and forwarded the whole thread to Earl to review the discrepancies.",
+        "src": [
+          {
+            "d": "2026-07-20",
+            "from": "Abacherli",
+            "subj": "RE: 3/9 RECAP Internal Call - EW PEP Cutting Edge Staffing, LLC dba Banyan Treatment Centers QK63283-00099"
+          },
+          {
+            "d": "2026-07-20",
+            "from": "Abacherli",
+            "subj": "FW: Cutting Edge QK63283 00099 Client Issues with Auto Enrollment/Deferral Increase"
+          }
+        ]
+      },
+      {
         "d": "Jul 22",
         "t": "Evidence trail assembled",
         "n": "Tawnya forwarded three chains into the audit — the 5/22 client call where the early-access deferral changes were first flagged, the secure thread on participants possibly in default, and the deferral details question.",
@@ -1304,9 +1402,28 @@
         ]
       },
       {
+        "d": "Jun 17",
+        "t": "Payroll test file returned with errors",
+        "n": "Dante tested the TO Payroll layout in One Payroll — 11 errors and 14 warnings, left in errored state for review. The client's later attempt used the wrong template tab and had to be re-sent.",
+        "src": [
+          {
+            "d": "2026-06-17",
+            "from": "Payroll Support",
+            "subj": "RE: QK63283 00099 - Banyan Treatment - One Payroll Testing Request"
+          }
+        ]
+      },
+      {
         "d": "Jun 25",
         "t": "One Payroll walkthrough with client",
-        "n": "Aaron corrected an earlier instruction — because they're on One Payroll, the manual upload form and instructions Tawnya sent didn't apply."
+        "n": "Aaron corrected an earlier instruction — because they're on One Payroll, the manual upload form and instructions Tawnya sent didn't apply.",
+        "src": [
+          {
+            "d": "2026-06-24",
+            "from": "Jones",
+            "subj": "Re: QK63283-00099 Cutting Edge PAYROLL file"
+          }
+        ]
       },
       {
         "d": "Jun 29",
@@ -1335,7 +1452,14 @@
       {
         "d": "Jul 7",
         "t": "CSR questions closed",
-        "n": "Sarrah confirmed no alternate payees and no installment payments; Paul finished his sections."
+        "n": "Sarrah confirmed no alternate payees and no installment payments; Paul finished his sections.",
+        "src": [
+          {
+            "d": "2026-07-07",
+            "from": "Morton",
+            "subj": "RE: CSR For Cutting Edge Staffing, LLC D/B/A Banyan Treatment Centers - QK63283/00099"
+          }
+        ]
       },
       {
         "d": "Jul 20",
@@ -1366,6 +1490,17 @@
             "from": "Neighbor",
             "subj": "RE: Cutting Edge QK63283 00099 Client Issues with Auto Enrollment/Deferral Increase",
             "q": "Hi Aaron, ~ ~ Yes, they did have auto en"
+          }
+        ]
+      },
+      {
+        "t": "Participants loaded out of default for the conversion",
+        "n": "The client couldn't say who was actually in default, so everyone was loaded out of default at whatever percentage came over on the vendor files. Auto-enrolment applies going forward. This is the decision the later audit is testing.",
+        "src": [
+          {
+            "d": "2026-06-18",
+            "from": "Abacherli",
+            "subj": "RE: Eligibility and Enrollment - QK63283-00099 Cutting Edge Staffing, LLC dba Banyan Treatment Centers"
           }
         ]
       },
@@ -1422,12 +1557,12 @@
     "golive": "Blackout begins Jul 24, 2026",
     "cap": "Blackout Jul 24",
     "cardNote": "interim payroll due for 7/24",
-    "cardText": "Blackout in two days. The interim payroll file for the 7/24 run is yours and there is no fallback — iSolved integration won't be live for months.",
-    "headline": "Mid-conversion and out of slack. Limited access runs to 7/29, blackout starts 7/24, liquidation 7/31, wire 8/1. The Adoption Agreement closed via DocuSign on 7/22 and your test-file feedback is with the client. What's left on you is the interim payroll file: iSolved integration is only just getting a named analyst, so the 7/24 and 8/7 payrolls have to be manually uploaded and the file has to exist first.",
+    "cardText": "Blackout tomorrow. The interim payroll file for the 7/24 run is yours and there is no fallback — 180 integration with iSolved is still setting up and won't be live in time.",
+    "headline": "Mid-conversion, blackout starts tomorrow (7/24), liquidation is 7/31, wire 8/1. The AAA closed via DocuSign on 7/22, and the source/fund mapping came back clean from Paul Giacobbe's QC audit on 7/23. Census is loaded — 76 participants defaulted to investment elections, and the last 5 that were missing SSNs went in too, though you've agreed to double-check those five once the final Ascensus records arrive. What's left on you: the interim payroll file for the 7/24 and 8/7 runs, since Melanie Rhine only just took over the 180 integration setup and hasn't confirmed a file format or FTP contact yet.",
     "open": [
       {
         "task": "Create the interim payroll file for One Payroll",
-        "note": "It covers the 7/24 and 8/7 payroll runs, which have to be uploaded by hand because iSolved integration won't be live in time. Upload happens once loans are loaded. 7/24 is the blackout date — this has no room left.",
+        "note": "Covers the 7/24 and 8/7 runs, which have to be uploaded by hand while iSolved's 180 integration is still getting set up. Blackout starts tomorrow with nothing else in place yet.",
         "who": "Joel",
         "mine": true,
         "src": [
@@ -1439,10 +1574,9 @@
         ]
       },
       {
-        "task": "Answer Melanie Rhine's 180 integration questions",
-        "note": "She was assigned on 7/21 and asked you for the file specs, whether the isolved setup — pre-tax, Roth, discretionary match, two loans — is right, and how contributions are processed today. Damien's 7/22 thanks suggests part of this went back; the plan-type and contribution-method confirmations aren't in the record.",
-        "who": "Joel",
-        "mine": true,
+        "task": "Get Melanie Rhine's answers on the 180 payroll integration",
+        "note": "You sent her the file layouts on 7/21 and asked whether she owns FTP automation setup or has a contact, plus what file format they'll use. Neither has come back yet, and the interim manual-upload process stays in place until it does.",
+        "who": "Melanie Rhine",
         "src": [
           {
             "d": "2026-07-21",
@@ -1450,15 +1584,15 @@
             "subj": "401(K) 180 Introduction Email / Leiby's Dairy Inc."
           },
           {
-            "d": "2026-07-22",
-            "from": "Hurm",
-            "subj": "RE: 401(K) 180 Introduction Email / Leiby's Dairy Inc. (QK63283 00112)"
+            "d": "2026-07-21",
+            "from": "Abacherli",
+            "subj": "RE: 401(K) 180 Introduction Email / Leiby's Dairy Inc."
           }
         ]
       },
       {
         "task": "Get the prior-year and year-to-date data from Amanda",
-        "note": "Prior year compensation, prior year hours and 12/31/25 balances don't depend on the last Ascensus payroll, so they can come now. Amanda said on 7/22 she can send them shortly. Base data stays incomplete until they land.",
+        "note": "Prior year compensation, prior year hours and 12/31/25 balances don't depend on the last Ascensus payroll, so they can come now. Amanda said on 7/22 she can send them shortly, but they hadn't landed as of 7/23.",
         "who": "Amanda Lucas",
         "src": [
           {
@@ -1475,48 +1609,18 @@
       },
       {
         "task": "Collect the post-payroll data set from Ascensus",
-        "note": "Eligibility, deferral elections, year-to-date compensation and hours can only come after the final Ascensus payroll. Contribution rates aren't in the final records, so deferral elections need a separate report built.",
-        "who": "Amanda Lucas · Ascensus",
+        "note": "Eligibility, deferral elections, YTD compensation and YTD hours can only come after the final Ascensus payroll runs. Deferral elections need a separate report since contribution rates aren't part of the final records. Census already loaded the 5 participants who were missing SSNs, defaulted to elections — you agreed to double-check those five against the final records when they arrive.",
+        "who": "Amanda Lucas / Ascensus",
         "src": [
           {
             "d": "2026-07-21",
             "from": "Hurm",
             "subj": "RE: Test file for #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project"
-          }
-        ]
-      },
-      {
-        "task": "Fix the Plan Sponsor Site defect blocking new EW PEP users",
-        "note": "New users can't be created under the ExcelWise PEP, so Natalie, Amanda and Ellen have no credentials. Their details were collected on 7/22 and are sitting waiting on the fix.",
-        "who": "Jessica (internal)",
-        "src": [
-          {
-            "d": "2026-07-22",
-            "from": "Hurm",
-            "subj": "RE: Leiby's Dairy - QK63283 00112 - Weekly Internal Call 7.22 (recap)"
           },
           {
-            "d": "2026-07-15",
-            "from": "Hurm",
-            "subj": "RE: Leiby's Dairy - QK63283 00112 - Weekly Internal Call 7.15 (recap)"
-          }
-        ]
-      },
-      {
-        "task": "Confirm Ascensus invoices are paid before blackout",
-        "note": "Ascensus stated payment must be received before blackout to hold the current liquidation timeline. Natalie's team was processing payment as of 7/15 with a 7/24 deadline.",
-        "who": "Natalie",
-        "src": [
-          {
-            "d": "2026-07-14",
-            "from": "Natalie Laackman",
-            "subj": "Re: #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project"
-          },
-          {
-            "d": "2026-07-14",
-            "from": "Hurm",
-            "subj": "RE: #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project",
-            "q": "Good Morning Ascensus Offboarding, ~ ~ P"
+            "d": "2026-07-23",
+            "from": "Abacherli",
+            "subj": "RE: Leiby's Dairy - QK63283/00112 - DC status update"
           }
         ]
       }
@@ -1553,6 +1657,24 @@
             "d": "2026-06-17",
             "from": "Giacobbe",
             "subj": "RE: Leiby's Dairy - QK63283/00112 - DC status update"
+          }
+        ]
+      },
+      {
+        "d": "Jul 14",
+        "t": "Ascensus invoices sent for payment",
+        "n": "Natalie's team took on the outstanding invoices, ahead of Ascensus's requirement that payment land before blackout to hold the liquidation timeline. Not Joel's — an accounts matter on the client side.",
+        "src": [
+          {
+            "d": "2026-07-14",
+            "from": "Natalie Laackman",
+            "subj": "Re: #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project"
+          },
+          {
+            "d": "2026-07-14",
+            "from": "Hurm",
+            "subj": "RE: #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project",
+            "q": "Good Afternoon Ascensus contact"
           }
         ]
       },
@@ -1600,7 +1722,7 @@
       {
         "d": "Jul 21",
         "t": "Payroll integration contact replaced",
-        "n": "Sajin Chhabra left iSolved mid-conversion. Melanie Rhine now owns the 180 setup, testing and go-live, with PayKonnect as the connection.",
+        "n": "Sajin Chhabra left iSolved mid-conversion. Alyssa Unger said an integration analyst would reach the client first before looping the team in for testing; Melanie Rhine then took over the 180 setup, testing and go-live, with PayKonnect as the connection. Joel sent her the file layouts on 7/21.",
         "src": [
           {
             "d": "2026-07-21",
@@ -1611,77 +1733,74 @@
             "d": "2026-07-17",
             "from": "Hurm",
             "subj": "RE: Leiby's Dairy, Inc. - QK63283 00112 - iSolved (status)"
-          }
-        ]
-      },
-      {
-        "d": "Jul 13",
-        "t": "Limited access opened",
-        "n": "Runs 7/13 through 7/29. Participants can register, enroll, name beneficiaries and set allocations ahead of the conversion amount posting.",
-        "src": [
-          {
-            "d": "2026-07-13",
-            "from": "Hurm",
-            "subj": "Leiby's Dairy, LLC - QK63283 00112 - Limited Access Announcement",
-            "q": "Good Morning Natalie, ~ ~ I was notified"
-          }
-        ]
-      },
-      {
-        "d": "Jul 14",
-        "t": "Newsletter revised at client request",
-        "n": "Natalie asked for the call-to-action sections to be bolded and highlighted because employees must act to invest out of cash — the original PDF buried it. Communications produced a highlighted version the same day.",
-        "src": [
-          {
-            "d": "2026-07-14",
-            "from": "Hurm",
-            "subj": "RE: Leiby's Dairy, LLC - QK63283 00112 - Limited Access Announcement (conversion newsletter inquiry)"
           },
-          {
-            "d": "2026-07-14",
-            "from": "Natalie Laackman",
-            "subj": "Re: Leiby's Dairy, LLC - QK63283 00112 - Limited Access Announcement (conversion newsletter inquiry)"
-          }
-        ]
-      },
-      {
-        "d": "Jul 15",
-        "t": "Test files authorized",
-        "n": "Ascensus confirmed delivery to the sponsor site on 7/20 with email notification.",
-        "src": [
-          {
-            "d": "2026-07-15",
-            "from": "offboarding",
-            "subj": "RE: #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project"
-          }
-        ]
-      },
-      {
-        "d": "Jul 16",
-        "t": "AAA signed by client",
-        "n": "Returned as a scan; countersignature moved to DocuSign the following day.",
-        "src": [
           {
             "d": "2026-07-16",
-            "from": "Hurm",
-            "subj": "RE: Leiby's Dairy, Inc. - QK63283 00112 - AAA (signed)"
+            "from": "Unger",
+            "subj": "Re: [EXTERNAL] RE: RITM1515550 New Inbound SFTP for Leiby's Dairy – QK63283 00112- New plan from Transition"
           }
         ]
       },
       {
-        "d": "Jul 20",
-        "t": "Ascensus test files completed and handed to Joel",
-        "n": "Damien forwarded them to work the base file from, asking for questions before assembly. Remaining reports still need pulling from the sponsor site by the client.",
+        "d": "Jul 21",
+        "t": "Source/fund mapping opened for QC",
+        "n": "Joel circulated the mapping file; Jessica Mally added the Source I's and Anthony Fella looped her in as the TC.",
         "src": [
           {
-            "d": "2026-07-20",
-            "from": "Hurm",
-            "subj": "RE: Test file for #261042 LEIBY'S DAIRY, INC. 401(K) P/S PLAN - Deconversion Project"
+            "d": "2026-07-21",
+            "from": "Abacherli",
+            "subj": "Leiby's Dairy - QK63283 00112 - Source / Fund Mapping"
           },
           {
-            "d": "2026-07-20",
+            "d": "2026-07-21",
+            "from": "Fella",
+            "subj": "RE: Leiby's Dairy - QK63283 00112 - Source / Fund Mapping"
+          },
+          {
+            "d": "2026-07-22",
+            "from": "Mally",
+            "subj": "RE: Leiby's Dairy - QK63283 00112 - Source / Fund Mapping"
+          }
+        ]
+      },
+      {
+        "d": "Jul 22",
+        "t": "Client contact details collected for site access",
+        "n": "Emails and mobile numbers for Natalie, Amanda and Ellen are on file, ready for whenever the Plan Sponsor Site's new-user issue under the EW PEP clears — that fix is on the internal product side, not Joel's.",
+        "src": [
+          {
+            "d": "2026-07-22",
             "from": "Hurm",
-            "subj": "Leiby's Dairy - QK63283 00112 - Test File (completed)"
+            "subj": "RE: Leiby's Dairy, Inc. - QK63283 00112 - Ongoing Install Call 7.22 (recap)"
+          }
+        ]
+      },
+      {
+        "d": "Jul 23",
+        "t": "Source mapping audit passed clean",
+        "n": "Paul Giacobbe completed the mapping audit with no issues found.",
+        "src": [
+          {
+            "d": "2026-07-23",
+            "from": "Giacobbe",
+            "subj": "RE: Leiby's Dairy - QK63283 00112 - Source / Fund Mapping"
+          }
+        ]
+      },
+      {
+        "d": "Jul 23",
+        "t": "Census loaded, missing-SSN records resolved",
+        "n": "76 participants loaded and defaulted to investment elections; the 5 that had been missing SSNs also loaded. Joel and Damien agreed to review those five again once final Ascensus records come in.",
+        "src": [
+          {
+            "d": "2026-07-23",
+            "from": "Abacherli",
+            "subj": "Leiby's Dairy - QK63283/00112 - DC status update"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Hurm",
+            "subj": "RE: Leiby's Dairy - QK63283/00112 - DC status update"
           }
         ]
       }
@@ -2450,13 +2569,13 @@
     "client": "Timothy McNish · Daniel Clements (Creative Planning)",
     "golive": "Blackout ends week of Nov 6",
     "cap": "Converting · two plans",
-    "cardNote": "dates locked 7/21",
-    "cardText": "Full transfer calendar set and Putnam liquidation approved. Three client deliverables are outstanding, census first at 8/5.",
-    "headline": "Two Canam entities merging into the ExcelWise PEP. The 7/21 internal call locked the whole calendar: blackout starts 9/23 at 4pm ET, liquidation 9/30, assets transfer 10/1, final files 10/14, blackout ends the week of 11/6. Putnam approved the stable value liquidation with no liquidity issues, which was the one thing that could have pushed the conversion. What is left is client-side — census by 8/5, the ADP notification and a loan report.",
+    "cardNote": "census in transit 7/23",
+    "cardText": "Full transfer calendar set and Putnam liquidation approved. Tim has the census files ready and Alicia set up a secure channel to send them; ADP notification and the loan report are still outstanding.",
+    "headline": "Two Canam entities merging into the ExcelWise PEP. The 7/21 internal call locked the whole calendar: blackout starts 9/23 at 4pm ET, liquidation 9/30, assets transfer 10/1, final files 10/14, blackout ends the week of 11/6. Putnam approved the stable value liquidation with no liquidity issues, which was the one thing that could have pushed the conversion. The 7/22 external client call confirmed the same three client deliverables — census by 8/5, the ADP notification and a loan report — and on 7/23 Tim said the census files are ready; Alicia sent him a secure email to submit them through, so that item is now in motion rather than stalled.",
     "open": [
       {
         "task": "Return early access census data for both plans",
-        "note": "Due 8/5. It builds the early access accounts and drives who gets the required notices on 8/21, so a slip here moves two dates at once.",
+        "note": "Tim has the files ready as of 7/23 and Alicia opened a secure channel for him to send them. Still needs to land and get confirmed before the 8/5 deadline, since it drives who gets the required notices on 8/21.",
         "who": "Timothy McNish",
         "src": [
           {
@@ -2468,6 +2587,16 @@
             "d": "2026-07-22",
             "from": "Johnson",
             "subj": "7/22 RECAP + SAMPLE ANNOUNCEMENT"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "McNish",
+            "subj": "Re: 7/22 RECAP + SAMPLE ANNOUNCEMENT"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Johnson",
+            "subj": "Re: 7/22 RECAP + SAMPLE ANNOUNCEMENT"
           }
         ]
       },
@@ -2620,6 +2749,23 @@
             "subj": "7/22 RECAP + SAMPLE ANNOUNCEMENT"
           }
         ]
+      },
+      {
+        "d": "Jul 23",
+        "t": "Census files ready, secure transfer set up",
+        "n": "Tim confirmed both census files are ready and asked how to send them securely; Alicia sent a dedicated secure email for him to use.",
+        "src": [
+          {
+            "d": "2026-07-23",
+            "from": "McNish",
+            "subj": "Re: 7/22 RECAP + SAMPLE ANNOUNCEMENT"
+          },
+          {
+            "d": "2026-07-23",
+            "from": "Johnson",
+            "subj": "Re: 7/22 RECAP + SAMPLE ANNOUNCEMENT"
+          }
+        ]
       }
     ],
     "decisions": [
@@ -2664,33 +2810,15 @@
     "phase": "converting",
     "kicker": "NQ start-up",
     "prior": "None (start-up)",
-    "payroll": "TBD",
+    "payroll": "Paycor (client-uploaded)",
     "com": "Tricia Johnson",
     "client": "CIS Secure Computing",
     "golive": "Target Sep 1, 2026",
     "cap": "NQ start-up · Sep 1",
-    "cardNote": "sub pack, TOA and signed PRD in hand",
-    "cardText": "Tricia sent the Sub Pack, TOA and signed PRD on 7/22. Submitting the PRD to Testing is on you and it gates the file specs.",
-    "headline": "A non-qualified start-up with a 9/1/26 effective date. Tricia delivered the Sub Pack, the New Account Worksheet and the signed PRD on 7/22, which clears the three open provisions and the TOA. The paperwork now sits with you: Tricia asked on 7/21 that the PRD go to Testing to build the Base Data and Payroll File Specs, and nothing downstream starts until it does.",
+    "cardNote": "sub pack + pricing closed 7/22",
+    "cardText": "You sent Tricia the Base Data and Payroll File Specs on 7/21. Sub Pack Review and pricing review both closed out 7/22 along with the signed PRD, TOA and sub pack.",
+    "headline": "A non-qualified start-up with a 9/1/26 effective date. Tricia asked on 7/21 for the PRD to go to Testing for the Base Data and Payroll File Specs; you replied the same day that you already had them ready and sent them over, so the client can fill them out. Sub Pack Review and pricing review both completed 7/22, and Tricia sent the signed PRD, TOA and sub pack the same day — the client is paying required revenue and advisor fees. Payroll is settled as Paycor with the client manually uploading contribution files. Still open: an executed plan document (Melanie flagged this is distinct from the signed PRD and needs to happen well ahead of 9/1), how participants will make deferral and distribution elections, and the client's signed adoption agreement, which Muriel needs before she can build the enrollment forms. Theresa Herzner has taken over as Transition Consultant from Dan Clifford.",
     "open": [
-      {
-        "task": "Submit the PRD to Testing for Base Data and Payroll File Specs",
-        "note": "Tricia asked for this on 7/21 and the signed PRD landed the next day, so nothing is blocking it. The file specs gate payroll setup, and the plan is effective 9/1.",
-        "who": "Joel",
-        "mine": true,
-        "src": [
-          {
-            "d": "2026-07-21",
-            "from": "Johnson",
-            "subj": "submit PRD to Testing for file specs"
-          },
-          {
-            "d": "2026-07-22",
-            "from": "Johnson",
-            "subj": "07-22-26 - Internal Call - CIS Secure Computing"
-          }
-        ]
-      },
       {
         "task": "Settle how participants will make deferral and distribution elections",
         "note": "Melanie asked on 7/1 whether this plan uses the NQDC online enrollment process and expects paper forms regardless, because everyone is newly eligible and the system has to be built. Reg Support cannot start the enrollment form or plan highlights until it is answered.",
@@ -2705,7 +2833,7 @@
       },
       {
         "task": "Get the plan document executed well ahead of 9/1",
-        "note": "Melanie flagged that a brand-new NQDC plan document must be executed before the effective date, and that Reg Support needs the signed document much earlier than 9/1 to build the enrollment form and plan highlights. The signed PRD is not the plan document.",
+        "note": "Melanie flagged that a brand-new NQDC plan document must be executed before the effective date, and that Reg Support needs the signed document much earlier than 9/1 to build the enrollment form and plan highlights. The signed PRD delivered 7/22 is not the plan document.",
         "who": "Tricia",
         "src": [
           {
@@ -2716,14 +2844,14 @@
         ]
       },
       {
-        "task": "Confirm whether Paycor goes to 180 integration",
-        "note": "Flagged as a maybe at the 6/22 kickoff and never revisited. Payroll is still carried as TBD.",
-        "who": "Tricia",
+        "task": "Get the client's signed adoption agreement",
+        "note": "Muriel needs it to build the enrollment forms; still in process as of 7/22.",
+        "who": "Muriel · client",
         "src": [
           {
-            "d": "2026-06-26",
+            "d": "2026-07-22",
             "from": "Johnson",
-            "subj": "06-22-26 - Internal Kickoff Call recap"
+            "subj": "07-22-26 -Internal Call - CIS Secure Computing Non-Qualified Plan"
           }
         ]
       }
@@ -2789,13 +2917,30 @@
       },
       {
         "d": "Jul 21",
-        "t": "Testing submission requested",
-        "n": "Tricia asked you to send the PRD to Testing so the Base Data and Payroll File Specs can be created.",
+        "t": "Base Data and Payroll File Specs sent to Testing",
+        "n": "Tricia asked you to submit the PRD to Testing so the file specs could be created; you already had them ready and sent them the same day, so the client can start filling them out.",
         "src": [
           {
             "d": "2026-07-21",
             "from": "Johnson",
             "subj": "submit PRD to Testing for file specs"
+          },
+          {
+            "d": "2026-07-21",
+            "from": "Abacherli",
+            "subj": "RE: NQ98510 - CIS Secure Computing, Inc. Non-Qualified Plan - submit PRD to Testing for file specs"
+          }
+        ]
+      },
+      {
+        "d": "Jul 21",
+        "t": "Theresa Herzner takes over as Transition Consultant",
+        "n": "Replaces Dan Clifford; NBI and the NIGO tracker were updated to reflect it.",
+        "src": [
+          {
+            "d": "2026-07-21",
+            "from": "New Business",
+            "subj": "RE: CIS Secure Computing, Inc. Non Qualified-NQ98510/00001 ~ New Sale & Assignments"
           }
         ]
       },
@@ -2807,7 +2952,19 @@
           {
             "d": "2026-07-22",
             "from": "Johnson",
-            "subj": "07-22-26 - Internal Call - CIS Secure Computing"
+            "subj": "RE 07-22-26 - Internal Call - CIS Secure Computing Non-Qualified Plan"
+          }
+        ]
+      },
+      {
+        "d": "Jul 22",
+        "t": "Sub Pack Review and pricing review completed",
+        "n": "Payroll confirmed as Paycor with the client manually uploading contribution files. Client also confirmed Brad Knowles as the plan's 3(38) advisor, no additional Plan Sponsor Access needed, and no non-employee board members in the plan.",
+        "src": [
+          {
+            "d": "2026-07-22",
+            "from": "Johnson",
+            "subj": "07-22-26 -Internal Call - CIS Secure Computing Non-Qualified Plan"
           }
         ]
       }
@@ -2843,6 +3000,17 @@
             "d": "2026-07-06",
             "from": "Johnson",
             "subj": "07-06-26 -Internal Call - CIS Secure Computing Non-Qualified Plan"
+          }
+        ]
+      },
+      {
+        "t": "Payroll is Paycor, manual upload — no 180 integration",
+        "n": "Confirmed at the 7/22 internal call; the client will manually upload contribution files.",
+        "src": [
+          {
+            "d": "2026-07-22",
+            "from": "Johnson",
+            "subj": "07-22-26 -Internal Call - CIS Secure Computing Non-Qualified Plan"
           }
         ]
       }
