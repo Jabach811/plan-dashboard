@@ -1,0 +1,488 @@
+{
+  "COCC": {
+    "Account Balances": [
+      "Most transfers-in-kind posted as of the 03/18/2026 status line; the balance of them was left to post on arrival.",
+      "Cross-check against Shares Reregistering, which was declared fully processed on 03/27 — treat that as the closing date for the asset side.",
+      "Nothing here speaks to the remittance-error reversal, which is tracked outside the load."
+    ],
+    "Shares Reregistering": [
+      "Ran as a staged posting rather than one event: partial 03/18, more 03/23, all funds 03/25.",
+      "The 03/25 posting was reversed and reprocessed on 03/27 — a correction, so 03/27 is the date that counts, not 03/25.",
+      "Closed: the status line ends with all funds processed (Shares Reregistering, 03/18/2026 line, last entry 03/27)."
+    ]
+  },
+  "PAQ": {
+    "Census": [
+      "Census loaded and every participant's elections defaulted — no participant-supplied elections came across.",
+      "No date recorded against the load, so pair it with the 08/25/2025 Investment Allocations line for timing.",
+      "Recordkeeper had no comments to add on the start-up."
+    ],
+    "Investment Allocations": [
+      "18 participants defaulted to the target date fund (Investment Allocations, 08/25/2025).",
+      "Consistent with the census note that all elections were defaulted — this is the whole defaulted population."
+    ],
+    "Eligibility": [
+      "N/A: non-qualified plan, so there is no eligibility to load.",
+      "This rules out the eligibility and hours-of-service work for this case rather than deferring it."
+    ]
+  },
+  "Havern": {
+    "Investment Allocations": [
+      "All participants defaulted (Investment Allocations, 05/07/2026) — no vendor election file to honour.",
+      "Ran two weeks after the census load, so the defaults cover the 135 who loaded, not the 46 that failed."
+    ],
+    "Census": [
+      "135 of 181 participants loaded from the census (Census, 04/21/2026).",
+      "43 rejected for missing date of hire and 3 for a rehire date later than the term date — both are client data problems, not load problems.",
+      "25 of the loaded records are missing gender, so they are on the system but incomplete.",
+      "All three data issues were with the client at the time of the note. Open."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "Duplicate SSNs identified and worked from a spreadsheet on the conversion contract share (04/21/2026).",
+      "The line records where the evidence lives, not an outcome — no count or resolution is stated."
+    ]
+  },
+  "Loyala": {
+    "Census": [
+      "One participant added post-load (Census, 12/12/2025) — a top-up, not a bulk load.",
+      "Consistent with a case that was otherwise complete by December."
+    ]
+  },
+  "Leiby's": {
+    "Census": [
+      "76 participants loaded with investment elections defaulted.",
+      "5 participants did not load because the file has no SSN for them — these have to come back from the client before they exist on the system.",
+      "The source census file is linked under the NBI census task section.",
+      "No date on the line, and the 5 missing records are unresolved. Open."
+    ]
+  },
+  "Fan Duel": {
+    "Census": [
+      "93 participants loaded with investment elections defaulted in the same pass.",
+      "No date on the census line; the 11/18/2025 allocation line covers the same 93, so treat that as the load date."
+    ],
+    "Investment Allocations": [
+      "93 participants defaulted (Investment Allocations, 11/18/2025) — the full census population.",
+      "No participant-directed elections were loaded, which fits a non-qualified start-up."
+    ]
+  },
+  "Health Advocates": {
+    "Account Balances": [
+      "$2,038,116.32 converted in two wires: $2,017,024.46 plan balances (ref 20250820922FVS) and $21,091.75 rollovers (ref 20250820922FW8).",
+      "The wire ran $0.11 over the final records; that overage was applied to the adjustment-of-earnings interest rather than returned.",
+      "$945.02 of interest was applied to participant accounts.",
+      "The vendor never supplied rollover detail, so the $21,091.75 is recorded at the plan level with no participant-level breakdown behind it."
+    ],
+    "Hardship Basis": [
+      "Hardship basis loaded for 39 participants (Hardship Basis, 08/22/2025).",
+      "Same 39 as the Roth first-contribution-date load, so both basis fields were completed together."
+    ],
+    "Roth First Contrib Date": [
+      "First contribution date set for 39 participants (Roth First Contrib Date, 08/22/2025).",
+      "Loaded alongside hardship basis — the Roth basis picture for this plan is complete for those 39."
+    ],
+    "RMD's/Recurring Payments": [
+      "Prior-year balances loaded for 221 participants (RMD's/Recurring Payments, 08/27/2025).",
+      "Only 77 of the 221 carry a balance above zero, so the RMD-relevant population is 77, not 221."
+    ],
+    "Investment Allocations": [
+      "All 5,612 participants defaulted and subscribed ahead of limited access (Investment Allocations, 07/16/2025).",
+      "Defaulted, not elected — this was done to open limited access, so expect election changes afterwards."
+    ],
+    "Census": [
+      "5,612 participants loaded from the base file, confirmed as the right file to use by the client contact on 07/16/2025.",
+      "One payroll was still to run, so YTD figures were deliberately held until after 7/26 — the known root of the doubled-hours problem later raised on this case.",
+      "Quality audit completed 07/17/2025."
+    ],
+    "Deferrals": [
+      "Deferrals were not converted — they come from the client after blackout (Deferrals, 08/22/2025).",
+      "Nothing to reconcile against the vendor here; the first real deferral data arrives with the first live payroll."
+    ],
+    "Outstanding Checks": [
+      "The vendor withheld funds from participant accounts in error — a vendor fault, not a conversion one.",
+      "Vendor issued a participant-level breakdown and a check to the client; the client wired the money on to us.",
+      "Cash applied to participant accounts on 09/03 using their current elections, and all accounts are whole.",
+      "Closed — the balance file behind it is on the conversion vendor share."
+    ],
+    "Beneficiary Data": [
+      "N/A: no beneficiary information was received at all.",
+      "This is an affirmative absence, not an omission — there is nothing to load or reconcile."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "137 participants also exist on another plan (07/16/2025).",
+      "Handled internally: 07/17 handed to be worked with the plan-data contact, 07/21 a ticket was submitted to remove the duplicates.",
+      "The line ends with the ticket submitted, not with removal confirmed. Open."
+    ]
+  },
+  "Health Concepts": {
+    "Forfeitures": [
+      "$0.13 sent to the prior provider for forfeiture balances (Forfeitures, 01/07/2026) — a residual sweep, not a real forfeiture pool."
+    ],
+    "Census": [
+      "The base-file census was scrapped by agreement with the client: all 499 base-file participants were cleared from the employee tables.",
+      "174 participants were then loaded from vendor data instead — the vendor file, not the base file, is the record of truth for this plan.",
+      "Explains the population drop; the audit that came back clean was run against the 174."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "N/A: the duplicate check was against the base-file population that was deleted, so it no longer applies.",
+      "If duplicates need checking they have to be re-run against the 174 vendor records."
+    ]
+  },
+  "Pella Carolina": {
+    "Deferrals": [
+      "The line carries only a payroll-provider comment marker and no data or date — nothing was recorded against the deferral load.",
+      "Given the unconfirmed SFTP testing on this case, treat the deferral position as unverified. Open."
+    ],
+    "Account Balances": [
+      "Prior-provider liquidation of $14,430.78 processed 11/13 (Account Balances, dated 11/12/2025).",
+      "Small single-wire conversion — no in-kind component recorded."
+    ],
+    "Forfeitures": [
+      "Four separate suspense accounts converted rather than one: plan admin $8.85, WWM forfeiture $9.86, forfeiture account $9.42, stale-check forfeiture $21.95.",
+      "$50.08 in total — housekeeping balances that still need mapping to the right forfeiture buckets on this side."
+    ],
+    "Investment Allocations": [
+      "222 participants defaulted into the managed account default at early access (10/13/2025).",
+      "5 test participants are sitting on the plan (000-00-3823/3824/3826/3827/3828) and should not be counted in the population or left in place."
+    ],
+    "Census": [
+      "The line records early access on 10/13/2025 with no counts.",
+      "Read it against the allocation line — 222 is the population that existed at early access."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "2 participants exist on another plan (241-65-1260, 590-84-7782) as of 10/13/2025.",
+      "Small enough to clear by hand; no resolution recorded. Open."
+    ]
+  },
+  "AWSNA": {
+    "Eligibility": [
+      "Eligibility and deferrals both loaded; the prior recordkeeper had no comments to add.",
+      "No date recorded — the 10/01/2025 deferral line is the nearest anchor."
+    ],
+    "Investment Allocations": [
+      "All 9 participants defaulted (Investment Allocations, 09/02/2025) — the whole plan, no elections honoured."
+    ],
+    "Census": [
+      "9 participants loaded (Census, 08/26/2025) — the entire active population at conversion.",
+      "Nothing here covers compensation data, which is the gap that later blocked compliance testing on this plan."
+    ],
+    "Deferrals": [
+      "Deferrals loaded for all 9 participants (Deferrals, 10/01/2025), matching the census count."
+    ],
+    "Auto Enroll": [
+      "Auto-enrolment set at 1% effective 10/01/2025.",
+      "No date on the line itself, and the effective date matches go-live, so this was configured as part of launch rather than converted."
+    ]
+  },
+  "Evexias": {
+    "Census": [
+      "161 participants loaded at early access on 11/14/2025, all defaulted to the managed account default.",
+      "Single-pass load; no rejects recorded."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "3 participants exist on another plan (451-75-4678, 471-02-7309, 525-37-5295) as of 11/14/2025.",
+      "Listed but not resolved on the line. Open."
+    ]
+  },
+  "Sibley": {
+    "Account Balances": [
+      "Participant balances loaded 10/13/2025, with an adjustment-of-earnings of $7,534.70 processed 11/3.",
+      "The AE is the true close of the asset side, three weeks after the main load."
+    ],
+    "Shares Reregistering": [
+      "Planned as transfer-in-kind but the vendor liquidated the funds instead, so this converted as cash.",
+      "Posted effective 09/30 on 10/03/2025 — the effective date, not the posting date, is what reconciles.",
+      "In-kind re-registration work is therefore not applicable for this plan."
+    ],
+    "Forfeitures": [
+      "One forfeiture-style account converted: unclaimed checks, $802.54 (Forfeitures, 10/13/2025).",
+      "Unclaimed checks rather than true forfeitures — check it lands in the right bucket."
+    ],
+    "Investment Allocations": [
+      "Split source: 438 participants loaded with real elections from the vendor file, 2,532 base-file participants defaulted (10/22/2025).",
+      "So roughly 15% of the plan is participant-directed and the rest is defaulted — expect election activity post-go-live."
+    ],
+    "Census": [
+      "440 participants loaded on 10/08/2025, well short of the ~2,970 implied by the allocation line.",
+      "Read this as the vendor-file population loading first, not the final headcount."
+    ]
+  },
+  "Calliditas": {
+    "Account Balances": [
+      "Wire processed to funds 4/20 (Account Balances, 04/24/2026) — single cash conversion, no in-kind."
+    ],
+    "Loans": [
+      "2 of the loans loaded with the wrong origination date because loan 11 was converted as loan 1, throwing the date alignment off.",
+      "The two bad records were deleted and reloaded with correct dates (Loans, 04/27/2026).",
+      "Corrected, but it is a numbering-mismatch failure mode worth checking on any future multi-loan file from this vendor."
+    ],
+    "Investment Allocations": [
+      "Elections loaded only for participants who had none — 31 in total (04/29/2026).",
+      "Deliberately non-destructive: existing elections were left alone rather than overwritten."
+    ],
+    "Census": [
+      "29 participants loaded after final records arrived (Census, 04/24/2026).",
+      "Loaded off final records rather than the base file, which is why the count is small and clean."
+    ]
+  },
+  "Mainline": {
+    "Investment Allocations": [
+      "3,613 participants defaulted before limited access (01/16/2026) — the full loaded population."
+    ],
+    "Census": [
+      "3,613 participants loaded on 01/16/2026 with only 2 rejects.",
+      "One rejected on a date of birth of 8/8/2023, the other on hire/term/rehire dates that contradict each other — both client data errors, both individually fixable.",
+      "A 2-in-3,613 failure rate makes this a clean load."
+    ]
+  },
+  "Thunder Valley": {
+    "Forfeitures": [
+      "Two distinct amounts landed in the same forfeiture account: $124,605.39 from the original participant's principal breakdown and $101,733.49 of overage transferred at the client's direction.",
+      "$226,338.88 in total, and the two have different origins — the second is a correction of an over-application, not a forfeiture.",
+      "Because they share one account, the audit trail depends on this note. Keep it with the balance."
+    ],
+    "Investment Allocations": [
+      "24 participants defaulted on 11/17/2025 — the entire loaded population, elections loaded the same day."
+    ],
+    "Census": [
+      "Initial population of 24 loaded 11/17/2025.",
+      "Small non-qualified population; census, elections and duplicate check all ran on the same day."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "One participant exists on another plan (556-35-9647) as of 11/17/2025 — a single record to reconcile."
+    ]
+  },
+  "Pella 2": {
+    "Forfeitures": [
+      "Two accounts converted: $3,332.57 and $2.49 (Forfeitures, 05/15/2026).",
+      "The $2.49 is a residual, so the working forfeiture balance is effectively $3,332.57."
+    ],
+    "Investment Allocations": [
+      "24 additional participants loaded and defaulted/subscribed on 04/28/2026.",
+      "An addition to an existing population, not an initial load — this is the spin-off group."
+    ],
+    "Census": [
+      "24 additional participants loaded 04/28/2026, all defaulted and subscribed.",
+      "None of the 24 carried a class code on the census file, so each raised a missing-class-code warning — they are on the system but incompletely coded.",
+      "3 further records errored because they already exist and the date of hire does not match; the expectation for those additions was still being followed up.",
+      "Both the class codes and the 3 mismatches are unresolved on this line. Open."
+    ],
+    "Yrs of Service": [
+      "Years of service loaded from vendor data plus a manual calculation (05/27/2026).",
+      "Many participants show 2025 hire dates that are not real hire dates — they are the acquisition date of the acquired company, so the vendor's service history sits behind them.",
+      "The client confirmed this and directed the manual approach, so the calculation is client-approved rather than document-derived. Keep the confirmation with the vesting record."
+    ]
+  },
+  "AVL": {
+    "Eligibility": [
+      "Eligibility loaded for the pre-tax and match sources only.",
+      "No date on the line; scope is limited to those two sources, so anything else on the plan is not covered here."
+    ],
+    "Deferrals": [
+      "Deferrals loaded with the pre-tax source defaulted at 3%, effective 09/01/2025.",
+      "A default rather than converted participant elections — the 3% is a plan setting applied at go-live."
+    ],
+    "Investment Allocations": [
+      "Defaulted in two passes: 7 participants on 8/26 and 19 more on 8/27 (26 total).",
+      "Mirrors the census load exactly, so every loaded participant was defaulted."
+    ],
+    "Census": [
+      "26 participants loaded across two days — 7 on 8/26 and 19 on 8/27/2025.",
+      "Small plan, no rejects recorded."
+    ]
+  },
+  "ISGRP - Denver Intl": {
+    "Eligibility": [
+      "The line carries only a start-up marker with no recordkeeper comments — nothing was recorded against eligibility.",
+      "No date and no data, so this is unevidenced rather than complete. Open."
+    ],
+    "Investment Allocations": [
+      "191 participants loaded and defaulted, plus 10 SSN-corrected participants defaulted after reload (06/08/2026).",
+      "The 10 are the same records the census line describes being deleted and reloaded — they are counted once, not twice."
+    ],
+    "Census": [
+      "3 participants loaded without a date of birth and were pending a client update at the time of the note.",
+      "10 participants carried incorrect SSNs on the base file; those were deleted and reloaded with accurate SSNs rather than patched in place.",
+      "The reload is the cleaner fix but it resets anything keyed to the old SSN — worth confirming elections followed.",
+      "The 3 missing dates of birth were still outstanding. Open."
+    ]
+  },
+  "Denali - Wallace": {
+    "Forfeitures": [
+      "N/A: the only forfeiture account carries $0.32.",
+      "Marked not applicable rather than loaded because there is no meaningful balance to convert."
+    ]
+  },
+  "Crispy": {
+    "Account Balances": [
+      "Participant balances loaded 12/09/2025 with a forfeiture amount of $1,579.03 alongside.",
+      "Same $1,579.03 appears on the Forfeitures line — one balance recorded in two places, not two amounts."
+    ],
+    "Forfeitures": [
+      "$1,579.03 forfeiture balance (Forfeitures, 12/09/2025).",
+      "Duplicated on the Account Balances line; reconcile as a single amount."
+    ],
+    "Census": [
+      "1,379 participants loaded, including 3 beneficiaries (Census, 11/21/2025).",
+      "3 records loaded without a class code (255192503, 256655056, 258373126) — on the system but incompletely coded.",
+      "Beneficiary records behave differently from participants on later loads; note the overlap with the deferral line."
+    ],
+    "Deferrals": [
+      "3 beneficiary participants were not loaded with deferrals — the same 3 flagged on the census, and correctly excluded.",
+      "1 participant has values in both Roth dollars and Roth percent, which the system cannot hold both of; it was left pending client instruction.",
+      "The final participant loaded (Deferrals, 11/26/2025). The dual-value record is the only unresolved item. Open."
+    ]
+  },
+  "TMG": {
+    "Account Balances": [
+      "Three-stage conversion: cash balances 1/7/2026, interest 1/8, transfer-in-kind funds 1/12.",
+      "The in-kind piece landed last, so 1/12 is the real completion date for the asset side, not the 01/08 line date."
+    ],
+    "Forfeitures": [
+      "Three accounts converted: 2025 suspense holding $0.29, 2025 LOC forfeiture $15,093.77, 2025 GUIDE 1 forfeiture $61,334.18.",
+      "$76,428.24 in total across two real forfeiture pools that stay separate — they belong to different groups and should not be merged."
+    ],
+    "Investment Allocations": [
+      "All participants defaulted (Investment Allocations, 12/10/2025); no vendor election file was honoured."
+    ],
+    "Census": [
+      "724 participants loaded including 2 beneficiary records (Census, 11/26/2025).",
+      "Nothing on this line addresses vesting, which is the field the later escalation turns on — the vesting data does not appear on the status table at all."
+    ]
+  },
+  "Stamats": {
+    "Account Balances": [
+      "$9,765,062.16 converted across 89 participants (Account Balances, 10/03/2025).",
+      "89 here against 91 on the census — 2 participants converted with no balance."
+    ],
+    "Loans": [
+      "4 loans added (Loans, 10/17/2025), two weeks after the balance load.",
+      "Small enough to verify individually against the vendor loan report."
+    ],
+    "Forfeitures": [
+      "Three accounts: $1.87, $0.01 and $5,287.74 (Forfeitures, 10/03/2025).",
+      "Only the $5,287.74 is a working balance; the other two are rounding residuals."
+    ],
+    "Investment Allocations": [
+      "All 91 participants defaulted to the managed account default (08/28/2025).",
+      "No participant elections converted, so the whole plan starts in the default."
+    ],
+    "Census": [
+      "91 participants loaded to the system for early access, which ran 9/15–9/26 (Census, 08/28/2025).",
+      "The load predates early access, so the counts on later lines are measured against this population."
+    ],
+    "Yrs of Service": [
+      "Non–safe harbour plan on a 5-year graded vesting schedule: 20/40/60/80/100%.",
+      "100% vesting on death and disability (Yrs of Service, 10/24/2025).",
+      "Schedule is recorded here only — vesting percentages loaded per participant are not evidenced on this table."
+    ]
+  },
+  "Cutting Edge Staffing": {
+    "Eligibility": [
+      "The line is truncated to a fragment with no date and no data — nothing usable was recorded against eligibility.",
+      "Given the live plan-entry-date problem on this case, eligibility should be treated as unverified rather than done. Open."
+    ],
+    "Deferrals": [
+      "Only a prior-recordkeeper comment marker was recorded; no counts, no date, no source detail.",
+      "This is the load now under audit — where the mapping came from, who should be in default and at what percent is not answerable from this table. Open."
+    ],
+    "Forfeitures": [
+      "One forfeiture account converted at $832.75 (Forfeitures, 06/10/2026)."
+    ],
+    "Investment Allocations": [
+      "1,785 elections defaulted and subscribed (04/24/2026) — the entire census population, none participant-directed."
+    ],
+    "Census": [
+      "1,785 participants loaded on 04/24/2026 with elections defaulted for the same population.",
+      "No rejects or data errors recorded on the line, which sits awkwardly against the census problems reported after go-live — the table does not evidence them."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "Duplicate SSNs were worked from a spreadsheet on the conversion contract share (04/24/2026).",
+      "The line records only where the evidence is; no count and no resolution. Open."
+    ]
+  },
+  "Bonnier": {
+    "Account Balances": [
+      "Two wires converted: $17,692,243.89 (ref 202607069227BJ) and $8,379.52 (ref 20260707922MJR).",
+      "$17,700,623.41 in total, both dated 07/06/2026 — cash, with no in-kind component, so re-registration does not apply."
+    ],
+    "Forfeitures": [
+      "$50,762.87 in a single forfeiture account (Forfeitures, 07/06/2026), converted with the main wire."
+    ],
+    "Investment Allocations": [
+      "Cash conversion with all employees defaulted (06/03/2026) — no vendor elections honoured.",
+      "Ran a month ahead of the asset wire, so defaults were in place before money arrived."
+    ],
+    "Eligibility": [
+      "Loaded using the client's eligibility dates even though they do not match the plan document's definitions — a deliberate, client-driven deviation worth keeping on the record.",
+      "A block of participants have eligibility dates later than their termination dates, which cannot both be right.",
+      "The affected records were being worked with the client at the time of the note. Open.",
+      "Cross-reference the long-term part-time review; both turn on the same date set."
+    ],
+    "YTD Hours": [
+      "Hours loaded using a DOL-approved equivalency method rather than actual hours, and the client approved it (07/10/2026).",
+      "Equivalency is only permitted when the plan document allows it and the resulting years of service are sent to the client for approval — both conditions are recorded as met here.",
+      "The DOL methods available are 10 hours per day, 45 per week, 95 per semi-monthly pay period, or 190 per month.",
+      "Hours drive vesting on this plan, so this approval is the audit trail behind every vesting figure."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "2 duplicate SSNs identified (06/03/2026), listed in a file on the conversion share.",
+      "Small enough to clear individually; no resolution recorded on the line. Open."
+    ]
+  },
+  "Goldbergs": {
+    "Investment Allocations": [
+      "All participants defaulted before limited access (01/16/2026)."
+    ],
+    "Census": [
+      "743 participants loaded for limited access on 01/16/2026, with no rejects recorded.",
+      "Loaded the same day as Mainline and on the same file specs — a clean paired load."
+    ]
+  },
+  "Redwood Cardinal": {
+    "Account Balances": [
+      "Balances posted to participant accounts on current elections, with earnings and extra cash posted alongside (10/07/2025).",
+      "Posting on current elections means the money followed each participant's live allocation, not the vendor's."
+    ],
+    "Loans": [
+      "5 loans loaded, 3 of which had the wrong payment amount and were deleted and reloaded (Loans, 10/17/2025).",
+      "A 3-in-5 error rate on the first pass — worth checking the vendor's loan payment field on anything else from this source."
+    ],
+    "Investment Allocations": [
+      "182 participants defaulted to the target date fund; 24 existing participants kept their current elections rather than being loaded (10/07/2025).",
+      "The 24 are the same population flagged as existing on another plan — deliberately left alone, not missed."
+    ],
+    "Census": [
+      "206 participants loaded to the plan (Census, 10/07/2025), matching 182 defaulted plus 24 existing."
+    ],
+    "Auto Enroll": [
+      "16 participants auto-enrolled on 10/21/2025 — those hired after 1/1/2025 with no deferral election.",
+      "Ran two weeks after the census load, so it picks up the post-conversion new hires."
+    ],
+    "EE exists on another plan with diff DOB": [
+      "24 participants exist on another plan (10/07/2025).",
+      "Same 24 whose elections were left in place on the allocation line — the overlap is the reason, not a coincidence."
+    ]
+  },
+  "Archbold": {
+    "Forfeitures": [
+      "A single forfeiture account of $58,812.35 converted on go-live day, 01/23/2026.",
+      "Only status line on this plan — the conversion data side was otherwise unremarkable."
+    ]
+  },
+  "Vera": {
+    "Shares Reregistering": [
+      "Transfer-in-kind processed for 10 funds (VFIA, Y36G, Y0HW, Y5LE, Y3JE, VSMA, VGSL, N663, Y5VR, S986), with remaining funds following.",
+      "All TIKs updated and processed as of 02/26/2026 — the in-kind side is closed.",
+      "The residual dividend wire that arrived later is a separate item and is not covered by this line."
+    ],
+    "Forfeitures": [
+      "$14,285.88 processed to adjustment of earnings (ref 20260212522SJL) on 02/12/2026.",
+      "Routed to AE rather than held as a forfeiture balance."
+    ],
+    "Census": [
+      "2 participants added who were not on the base file but do carry balances (Census, 02/13/2026).",
+      "Base-file gaps of this kind are why the balance file should be reconciled to the census, not the other way round."
+    ]
+  }
+}

@@ -1,0 +1,1001 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan Snapshot — Caseload</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#cc785c; --coral-active:#a9583e; --coral-soft:#e8a186;
+  --ink:#141413; --body:#3d3d3a; --muted:#6c6a64; --muted-soft:#8e8b82;
+  --hairline:#e6dfd8; --hairline-soft:#ebe6df;
+  --canvas:#faf9f5; --card:#efe9de; --cream-strong:#e8e0d2;
+  --dark:#181715; --dark-el:#252320;
+  --on-dark:#faf9f5; --on-dark-soft:#a09d96;
+  --amber:#e8a55a; --amber-deep:#a86a1f; --success:#5db872; --success-deep:#3c7d4c;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{height:100%}
+body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;height:100%;display:flex;flex-direction:column;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--dark);color:var(--on-dark);flex:none}
+.mast .in{max-width:1360px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-weight:500;font-size:21px;letter-spacing:-.2px;white-space:nowrap}
+.navwords{display:flex;align-items:center;gap:2px;flex-wrap:wrap;flex:1}
+.navwords button{font-size:11.5px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--on-dark-soft);padding:5px 11px;border-radius:8px;white-space:nowrap;transition:background .13s,color .13s}
+.navwords button:hover{color:var(--on-dark);background:var(--dark-el)}
+.navwords button.on{color:var(--on-dark);background:var(--dark-el)}
+.navwords button.on::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-right:7px;vertical-align:2px}
+.navwords button .n{font-size:10px;color:var(--on-dark-soft);margin-left:5px}
+.mechip{font-size:12px;font-weight:500;color:var(--coral-soft);background:rgba(204,120,92,.16);border-radius:9999px;padding:4px 13px;white-space:nowrap}
+.substrip{background:var(--canvas);border-bottom:1px solid var(--hairline);flex:none}
+.substrip .in{max-width:1360px;margin:0 auto;padding:7px 28px;font-family:var(--mono);font-size:11.5px;color:var(--muted-soft);display:flex;gap:8px;flex-wrap:wrap}
+.substrip .hi{color:var(--amber-deep);font-weight:500}
+
+/* ---------- shell ---------- */
+.page{max-width:1360px;margin:0 auto;padding:0 28px;width:100%;flex:1;min-height:0}
+.shell{display:grid;grid-template-columns:272px minmax(0,1fr);gap:22px;padding:20px 0;height:100%}
+@media (max-width:1080px){.shell{grid-template-columns:1fr}.rail{display:none}}
+/* only the caseload scrolls -- masthead, strip and rail stay put */
+.main{min-height:0;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--hairline) transparent}
+
+/* ---------- rail ---------- */
+.rail{height:100%;min-height:0;display:flex;flex-direction:column;background:var(--dark);border-radius:12px;padding:16px 13px 8px;color:var(--on-dark)}
+.railcap{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--on-dark-soft);padding:0 8px 11px}
+.rsearch{font-family:var(--sans);font-size:13.5px;color:var(--on-dark);width:100%;background:var(--dark-el);border:1px solid transparent;border-radius:8px;padding:8px 11px;margin-bottom:11px;flex:none}
+.rsearch::placeholder{color:var(--on-dark-soft)}
+.rsearch:focus{outline:0;border-color:var(--coral)}
+.rscroll{overflow-y:auto;flex:1;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:var(--dark-el) transparent}
+.rgrp{margin-bottom:2px}
+.rgrp>.rh{position:sticky;top:0;z-index:1;background:var(--dark);display:flex;align-items:center;gap:7px;width:100%;font-size:11px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--on-dark-soft);padding:8px 8px;border-radius:6px}
+.rgrp>.rh:hover{color:var(--on-dark)}
+.rgrp>.rh .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rgrp>.rh .cv{flex:none;font-size:7px;transform:rotate(90deg)}
+.rgrp.shut>.rh .cv{transform:rotate(0)}
+.rgrp.pin>.rh{color:var(--coral-soft)}
+.rgrp .rbody{padding:2px 0 8px}
+.rgrp.shut .rbody{display:none}
+.rlink{display:flex;align-items:baseline;gap:6px;width:100%;font-size:15.5px;line-height:1.45;color:var(--on-dark);padding:6px 9px;border-radius:6px}
+.rlink .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rlink:hover{color:var(--on-dark);background:var(--dark-el)}
+.rlink.on{color:var(--on-dark);background:var(--dark-el)}
+.rlink.on .t{font-weight:500}
+.rlink .dot{color:var(--coral);font-size:9px;flex:none}
+.rlink .nu{color:var(--on-dark);background:var(--coral-active);font-family:var(--mono);font-size:9.5px;flex:none;border-radius:9999px;padding:0 6px}
+.rempty{color:var(--on-dark-soft);font-size:12px;padding:6px 8px}
+
+/* ---------- caseload ---------- */
+.chead{position:sticky;top:0;z-index:3;background:var(--canvas);display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding:6px 2px 14px}
+.chead h1{font-family:var(--serif);font-weight:500;font-size:38px;letter-spacing:-.5px;line-height:1.1}
+.chead .tag{color:var(--muted);font-size:13.5px;margin-top:4px}
+.chead .tag .hi{color:var(--coral-active);font-weight:500}
+.legend{display:flex;gap:22px;font-size:12px;font-weight:500;color:var(--muted);padding-bottom:8px}
+.legend .sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:7px}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px}
+@media (max-width:1240px){.cases{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.cases{grid-template-columns:1fr}}
+/* fixed height across the whole grid -- a long plan name used to stretch its row and
+   leave every other card in it padded with dead space. the name now clamps at three
+   lines and the body takes whatever is left, so the cards stay a set of equals */
+.card{position:relative;overflow:hidden;border-radius:12px;padding:28px;height:492px;display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+/* 3px tier edge -- carries the tier so the fill isn't doing it alone */
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.dk::before{background:var(--coral)}
+.cm::before{background:var(--amber)}
+.wh::before{background:var(--hairline);transition:background .15s ease}
+button.card{cursor:pointer}
+button.card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(20,20,19,.09)}
+button.wh:hover{border-color:var(--coral-soft)}
+button.wh:hover::before{background:var(--coral-soft)}
+/* the big numeral is 48px tall and the white card's status dot is 8 -- pinning the row
+   keeps the name block starting at the same height on all three tiers */
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;min-height:48px;flex:none}
+.cphase{font-size:11.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.capline{display:flex;align-items:center;gap:9px;flex-wrap:wrap;min-width:0}
+.rtag{font-family:var(--mono);font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--hairline);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.dk .rtag,.dhero .rtag{color:var(--on-dark-soft);border-color:#3a3733}
+.cm .rtag{border-color:#ded5c5}
+/* every card reserves the same three lines for the name and hangs it from the top of
+   that block, so the name always starts right under the eyebrow row. a one-word plan
+   and a three-line one still land their case number, body and footer at the same height */
+.namebox{height:3.36em;font-size:29px;margin-top:14px;flex:none;display:flex;align-items:flex-start}
+.name{font-family:var(--serif);font-weight:500;font-size:29px;line-height:1.12;letter-spacing:-.3px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.case{font-family:var(--mono);font-size:12px;letter-spacing:.3px;line-height:1.4;color:var(--muted-soft);margin-top:8px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* the count is the number, not a pill wrapped around a word */
+.num,.mark{font-family:var(--mono);font-size:34px;line-height:.9;font-weight:500;letter-spacing:-1px}
+.num s,.mark s{display:block;text-decoration:none;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:1.3px;text-transform:uppercase;margin-top:6px;text-align:right}
+.num{color:var(--coral-soft)}
+.num s{color:var(--on-dark-soft)}
+.mark{color:var(--amber-deep)}
+.mark s{color:var(--muted)}
+/* two lines reserved either way, so a client name that wraps doesn't lift the rule */
+.foot{margin-top:22px;padding-top:12px;min-height:45px;border-top:1px solid var(--hairline);font-family:var(--mono);font-size:11.5px;line-height:1.4;color:var(--muted);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex:none}
+.foot span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.foot span:last-child{text-align:right}
+.cm .foot{border-top-color:#ded5c5}
+.newbadge{font-family:var(--mono);font-size:10.5px;font-weight:500;color:var(--on-dark);background:var(--coral-active);border-radius:9999px;padding:2px 9px;white-space:nowrap}
+.dk{background:var(--dark);color:var(--on-dark)}
+.dk .cphase{color:var(--on-dark-soft)}
+.dk .case{color:#7d7a73}
+.dk .foot{color:var(--on-dark-soft);border-top-color:var(--dark-el)}
+.flag{font-size:12px;font-weight:500;color:var(--coral-soft);background:rgba(204,120,92,.16);border-radius:9999px;padding:4px 12px;white-space:nowrap}
+.tasks{margin-top:20px;flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:8px}
+.task{font-size:13.5px;line-height:1.45;padding-left:16px;position:relative;flex:none;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.task::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--coral)}
+.dk .task{color:var(--on-dark)}
+.task.theirs{color:var(--muted)}
+.task.theirs::before{background:var(--muted-soft)}
+.dk .task.theirs{color:var(--on-dark-soft)}
+.more{font-size:12.5px;color:var(--muted-soft);padding-left:16px;margin-top:1px;flex:none}
+.dk .more{color:var(--on-dark-soft)}
+.cm{background:var(--card)}
+.wait-flag{font-size:12px;font-weight:500;color:var(--amber-deep);background:rgba(232,165,90,.22);border-radius:9999px;padding:4px 12px;white-space:nowrap}
+.next{margin-top:20px;flex:1;min-height:0;overflow:hidden}
+.next .lbl{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--amber-deep)}
+.next .what{font-size:14.5px;font-weight:500;color:var(--ink);margin-top:6px;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.next .also{font-size:12.5px;color:var(--muted);margin-top:10px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wh{background:var(--canvas);border:1px solid var(--hairline);padding:27px}
+.status{margin-top:20px;flex:1;min-height:0;font-size:13.5px;line-height:1.5;color:var(--muted);
+  display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.status b{font-weight:500;color:var(--success-deep)}
+.ok-dot{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.idle-dot{width:8px;height:8px;border-radius:50%;background:var(--cream-strong);border:1px solid var(--hairline);flex:none}
+footer{margin-top:28px;font-family:var(--mono);font-size:12.5px;color:var(--muted-soft);border-top:1px solid var(--hairline);padding-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- detail ---------- */
+.back{font-family:var(--mono);font-size:12px;color:var(--muted);padding:2px 0;margin-bottom:12px;display:inline-block}
+.back:hover{color:var(--coral-active)}
+.frame{border:1px solid var(--hairline);border-radius:16px;overflow:clip}
+/* the hero is three sibling dark blocks, not one, so the name line can be
+   sticky against the whole frame instead of just its own hero box */
+.dhero{background:var(--dark);color:var(--on-dark);padding:30px 34px 0}
+/* padding, not the headline's margin -- a top margin here collapses straight
+   out of the block and opens a gap under the sticky name plate */
+.dbot{background:var(--dark);color:var(--on-dark);padding:12px 34px 26px}
+.dtop{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.dphase{font-size:11.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--on-dark-soft)}
+.hrow{position:sticky;top:0;z-index:5;background:var(--dark);color:var(--on-dark);display:flex;align-items:baseline;gap:20px;padding:10px 34px 0;flex-wrap:wrap}
+.dname{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.06;letter-spacing:-.5px}
+.dcase{font-family:var(--mono);font-size:23px;color:var(--on-dark-soft)}
+/* pinned: shrink to a name plate so the tracker's own sticky heads still fit */
+.stuck .hrow{gap:14px;padding:12px 34px 11px;border-bottom:1px solid var(--dark-el)}
+.stuck .dname{font-size:20px}
+.stuck .dcase{font-size:13px}
+.dhead{font-size:14.5px;line-height:1.55;color:var(--on-dark-soft);max-width:780px}
+.facts{display:flex;gap:36px;margin-top:18px;padding-top:16px;border-top:1px solid var(--dark-el);flex-wrap:wrap}
+.fact span{display:block;font-size:10.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--on-dark-soft)}
+.fact b{font-size:13.5px;font-weight:500;color:var(--on-dark);margin-top:3px;display:block}
+/* both bodies sit on the warm ground so every section reads as a panel laid
+   on it rather than a hairline drawn on the same colour */
+.bodyc{padding:22px;background:var(--card)}
+.notice{background:var(--canvas);border-radius:10px;padding:12px 18px 12px 21px;font-size:13px;color:var(--amber-deep);font-weight:500;margin-bottom:16px;box-shadow:inset 3px 0 0 var(--amber)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.cols+.cols{margin-top:16px}
+@media (max-width:900px){.cols{grid-template-columns:1fr}}
+.dcard{position:relative;background:var(--canvas);border:1px solid var(--hairline);border-radius:12px;padding:24px}
+.dcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:12px 0 0 12px;background:var(--hairline)}
+.dcard.on::before{background:var(--coral)}
+/* section header: title, rule, count -- same grammar as the workstream heads */
+.sech{display:flex;align-items:baseline;gap:14px;padding-bottom:11px;border-bottom:1px solid var(--hairline)}
+.dcard.on .sech{border-bottom-color:var(--coral-soft)}
+.sec-h{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.2px}
+.sech .ct{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted-soft);white-space:nowrap}
+.sech .ct.out{color:var(--amber-deep)}
+.sech .ct.hot{color:var(--coral-active)}
+.sec-sub{font-size:12px;color:var(--muted-soft);margin-top:12px}
+.dtasks{margin-top:13px;display:flex;flex-direction:column;gap:12px}
+.dtask{padding-left:17px;position:relative}
+.dtask::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--coral)}
+.dtask.theirs::before{background:var(--muted-soft)}
+.dtask.note::before{background:var(--amber-deep)}
+.dtask .t{font-size:14px;font-weight:500;line-height:1.4}
+.dtask .n{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+.dtask .w{font-family:var(--mono);font-size:11px;color:var(--muted-soft);margin-top:3px}
+.loads{margin-top:13px}
+.load-g{font-size:10.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-soft);margin:12px 0 5px}
+.load-g:first-child{margin-top:0}
+.load{display:flex;justify-content:space-between;gap:16px;padding:5.5px 0;border-bottom:1px solid var(--hairline-soft);font-size:13px}
+.load:last-child{border-bottom:none}
+.load .lw{min-width:0}
+.load .ln{display:block;font-size:11.5px;color:var(--muted-soft);line-height:1.4}
+.load .d{font-family:var(--mono);font-size:12px;color:var(--ink);white-space:nowrap}
+.load .d.na{color:var(--muted-soft)}
+.load .d.out{color:var(--amber-deep);font-weight:500}
+.noload{margin-top:13px;font-size:13px;color:var(--muted)}
+.hist{margin-top:11px}
+.hrow2{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--hairline-soft)}
+.hrow2:last-child{border-bottom:none;padding-bottom:0}
+.hd{font-family:var(--mono);font-size:12px;color:var(--muted-soft);padding-top:2px}
+.hrow2.note .hd{color:var(--amber-deep)}
+.ht{font-size:14px;font-weight:500;line-height:1.4}
+.hn{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.45}
+.dec{margin-top:13px;display:flex;flex-direction:column;gap:12px}
+.dec-i .t{font-size:14px;font-weight:500;line-height:1.4}
+.dec-i .n{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+.empty{margin-top:13px;font-size:13px;color:var(--muted-soft)}
+.wsec{margin-top:18px;padding-top:4px;border-top:1px solid var(--hairline)}
+.threadline{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted-soft);display:flex;gap:8px;flex-wrap:wrap;padding:0 4px}
+
+/* ---------- NBI task tracker ---------- */
+.herolink{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--on-dark);background:var(--dark-el);border:1px solid #35322d;border-radius:9999px;padding:6px 14px;white-space:nowrap}
+.herolink:hover{border-color:var(--coral);color:var(--coral-soft)}
+.herolink .nb{font-family:var(--mono);font-size:10px;color:var(--on-dark);background:var(--coral-active);border-radius:9999px;padding:1px 7px}
+.tkbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--canvas);border-radius:10px;padding:12px 18px 12px 21px;margin-bottom:20px;box-shadow:inset 3px 0 0 var(--amber)}
+.tkbar .msg{font-size:13px;font-weight:500;color:var(--amber-deep)}
+.tkbar button{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--hairline);border-radius:9999px;padding:5px 13px;background:var(--canvas)}
+.tkbar button:hover{color:var(--coral-active);border-color:var(--coral-soft)}
+/* workstream head is the only thing that sits on the bare ground -- it divides
+   the panels below it, so its rule is darker than a panel hairline */
+.ws{margin-top:34px}
+.ws:first-of-type{margin-top:0}
+.wsh{position:sticky;top:46px;z-index:3;background:var(--card);display:flex;align-items:baseline;gap:15px;padding:12px 0 11px;border-bottom:1px solid #d5cab8}
+.wsh .no{font-family:var(--mono);font-size:12px;color:var(--coral-active)}
+.wsh h2{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.15;letter-spacing:-.3px}
+.wsh .ct{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted-soft)}
+/* clip, not hidden -- overflow:hidden would make this a scroll container and
+   kill the sticky headers inside it */
+.sub{position:relative;overflow:clip;margin-top:16px;background:var(--canvas);border:1px solid var(--hairline);border-radius:12px;padding:0 20px 8px}
+.sub::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--hairline)}
+.sub.fresh::before{background:var(--coral)}
+.subh{position:sticky;top:101px;z-index:2;background:var(--canvas);display:flex;align-items:baseline;gap:12px;padding:20px 0 10px;margin-bottom:4px;border-bottom:1px solid var(--hairline)}
+.sub.fresh .subh{border-bottom-color:var(--coral-soft)}
+.subh .nm{font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase}
+.subh .ct{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted-soft)}
+.sub.fresh .subh .ct{color:var(--coral-active)}
+.tcopy{font-family:var(--mono);font-size:10px;letter-spacing:.4px;color:var(--muted-soft);border:1px solid var(--hairline);border-radius:9999px;padding:3px 10px;background:var(--canvas);opacity:0;transition:opacity .12s ease}
+.sub:hover .tcopy,.tcopy:focus{opacity:1}
+.tcopy:hover{color:var(--coral-active);border-color:var(--coral-soft)}
+.trow{display:grid;grid-template-columns:minmax(180px,.9fr) 116px minmax(320px,2.4fr);gap:20px;padding:11px 0;border-bottom:1px solid var(--hairline-soft);align-items:start}
+.trow:last-child{border-bottom:none}
+.thead{padding-bottom:7px;border-bottom:1px solid var(--hairline)}
+.thead span{font-size:9px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted-soft)}
+.trow .tn{font-size:13px;line-height:1.4}
+.trow.todo .tn{color:var(--muted)}
+.trow .td{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;min-height:18px}
+.trow .tt{font-size:12.5px;line-height:1.55;color:var(--body);overflow-wrap:anywhere}
+.tlist{margin:0;padding-left:15px}
+.tlist li{margin:0 0 4px}
+.tlist li:last-child{margin-bottom:0}
+.tdot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--success)}
+.tna{font-size:9.5px;font-weight:600;letter-spacing:.5px;color:var(--muted);background:var(--card);border-radius:5px;padding:2px 7px}
+.tdash{color:#cfc8bf}
+.trow.new{background:rgba(204,120,92,.07);box-shadow:inset 3px 0 0 var(--coral);border-radius:0 6px 6px 0;padding-left:14px;margin-left:-17px}
+.newtag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.8px;color:var(--on-dark);background:var(--coral);border-radius:4px;padding:1px 6px;margin-right:7px;vertical-align:1px}
+.newtag.updated{color:var(--dark);background:var(--amber)}
+.load .newtag{margin:0 0 0 8px}
+.tksrc{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted-soft);margin-top:3px}
+/* the raw cell is evidence, not the note -- kept for audit, folded away by default */
+.raw{margin-top:6px}
+.raw summary{font-family:var(--mono);font-size:10.5px;color:var(--muted-soft);cursor:pointer;list-style:none}
+.raw summary::-webkit-details-marker{display:none}
+.raw summary::before{content:"+ ";color:var(--muted-soft)}
+.raw[open] summary::before{content:"\2212 "}
+.raw summary:hover{color:var(--coral-active)}
+.raw>div{margin-top:5px;padding-left:11px;border-left:2px solid var(--hairline);font-size:11.5px;line-height:1.55;color:var(--muted);white-space:pre-wrap}
+
+/* ---------- source chips ---------- */
+.src{position:relative;display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:var(--coral);margin-top:5px;cursor:pointer;white-space:nowrap}
+.src:hover{color:var(--coral-active)}
+.src svg{width:11px;height:11px;flex:none}
+.src+.src{margin-left:14px}
+.src.manual{color:var(--amber-deep)}
+.src.manual:hover{color:#8a5717}
+.pop{position:absolute;bottom:calc(100% + 8px);left:0;width:330px;background:var(--dark);color:var(--on-dark);border-radius:10px;padding:14px 16px;box-shadow:0 6px 24px rgba(20,20,19,.22);opacity:0;visibility:hidden;transition:opacity .12s;z-index:5;font-family:var(--sans);white-space:normal;cursor:default}
+.src:hover .pop,.src:focus-visible .pop{opacity:1;visibility:visible}
+.pop .pw{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--dark-el);padding-bottom:7px;margin-bottom:7px}
+.pop .pf{font-size:12.5px;font-weight:500;color:var(--on-dark)}
+.pop .pd{display:block;font-family:var(--mono);font-size:10.5px;color:var(--on-dark-soft);margin-top:2px}
+.pop .ps{display:block;font-size:11.5px;color:var(--on-dark-soft);margin-top:7px;line-height:1.45;border-top:1px solid var(--dark-el);padding-top:7px}
+.pop .po{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--coral-soft);margin-top:9px}
+.loads .src{margin:0}
+.load .src .pop, .sec-sub .src .pop{bottom:auto;top:calc(100% + 8px);left:auto;right:0}
+.cols>.dcard:last-child .src .pop{left:auto;right:0}
+
+/* ---------- mail modal ---------- */
+.overlay{position:fixed;inset:0;background:rgba(20,20,19,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:32px}
+.overlay.on{display:flex}
+.modal{background:var(--canvas);border-radius:16px;max-width:660px;width:100%;max-height:82vh;overflow:auto}
+.m-head{background:var(--dark);color:var(--on-dark);padding:22px 28px;border-radius:16px 16px 0 0}
+.m-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--coral-soft)}
+.m-tag.manual{color:var(--amber)}
+.m-subj{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.25;margin-top:8px;letter-spacing:-.2px}
+.m-meta{display:flex;gap:26px;margin-top:12px;font-size:12.5px;color:var(--on-dark-soft);flex-wrap:wrap}
+.m-meta b{color:var(--on-dark);font-weight:500}
+.m-body{padding:24px 28px 28px;font-size:14px;line-height:1.65;color:var(--body);white-space:pre-line}
+.m-close{float:right;background:var(--dark-el);color:var(--on-dark);border-radius:9999px;width:30px;height:30px;font-size:15px;line-height:1;text-align:center}
+</style>
+</head>
+<body>
+<div class="mast"><div class="in">
+  <span class="logo">Plan Snapshot</span>
+  <span class="navwords" id="navwords"></span>
+  <span class="mechip" id="mechip"></span>
+</div></div>
+<div class="substrip"><div class="in" id="substrip"></div></div>
+<div class="page"><div class="shell">
+  <nav class="rail">
+    <div class="railcap">Plan directory</div>
+    <input class="rsearch" id="rsearch" type="search" placeholder="Find a plan" autocomplete="off">
+    <div class="rscroll" id="rail"></div>
+  </nav>
+  <div class="main" id="main"></div>
+</div></div>
+
+<div class="overlay" id="ov">
+  <div class="modal">
+    <div class="m-head">
+      <button class="m-close" id="mx">&times;</button>
+      <div class="m-tag" id="mtag">source email</div>
+      <div class="m-subj" id="msubj"></div>
+      <div class="m-meta"><span>from <b id="mfrom"></b></span><span>sent <b id="mdate"></b></span></div>
+    </div>
+    <div class="m-body" id="mbody"></div>
+  </div>
+</div>
+
+<script>
+const PLANS = /*DATA*/;
+const BUILD = /*BUILD*/;
+const TODAY = new Date(BUILD.today + "T00:00:00");
+
+// the seven phases the build writes -- still used for a card's caption line
+const label = { live:"Live", converting:"Converting", "pre-conversion":"Pre-conversion", escalated:"Escalated", kickoff:"Kickoff", closed:"Closed", dormant:"Dormant" };
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function ago(d){
+  const days = Math.round((TODAY - new Date(d+"T00:00:00"))/864e5);
+  if (days <= 0) return "today";
+  if (days === 1) return "1 day ago";
+  if (days < 31) return days + " days ago";
+  const m = Math.round(days/30.4);
+  return m < 12 ? m + " mo ago" : (days/365).toFixed(1) + " yr ago";
+}
+const mineCount = p => (p.open||[]).filter(o => o.mine).length;
+const realOpen  = p => (p.open||[]).filter(o => o.who !== "—");
+const openCount = p => realOpen(p).length;
+const clientShort = p => String(p.client||"—").split(/[,·(]/)[0].trim();
+
+const ORDER = { escalated:0, "pre-conversion":1, converting:2, kickoff:3, live:4, closed:5, dormant:6 };
+
+/* ---------------- stages ----------------
+   Three stages over the seven phases. The split that matters is inside "live":
+   a plan that went live but still has open items is Transitioning -- it is up,
+   it is not clean, and it is still yours. Everything finished lands in
+   Converted, closed and dormant included -- a done plan is a done plan. */
+const bucket = p =>
+  p.phase === "escalated" ? "escalated" :
+  (p.phase === "closed" || p.phase === "dormant") ? "converted" :
+  p.phase === "live" ? (openCount(p) ? "transitioning" : "converted") :
+  "active";
+const stage  = { active:"Active", escalated:"Escalated", transitioning:"Transitioning", converted:"Converted" };
+const STAGES = ["escalated","active","transitioning","converted"];
+const SORDER = { escalated:0, active:1, transitioning:2, converted:3 };
+// plans parked in the Active Plans folder that are already past conversion --
+// Joel keeps them there on purpose, so say so rather than quietly filing them
+const parked = p => BUILD.roster && p.active === true && bucket(p) === "converted";
+const parkTag = p => parked(p) ? `<span class="rtag">active folder</span>` : "";
+
+let filter = "active", current = null;
+
+function matches(p){
+  if (filter === "all") return true;
+  if (filter === "mine") return mineCount(p) > 0;
+  if (filter === "new") return p.pending > 0;
+  return bucket(p) === filter;
+}
+const byRank = (a,b) => (SORDER[bucket(a)]-SORDER[bucket(b)]) || (ORDER[a.phase]-ORDER[b.phase]) || (a.last < b.last ? 1 : -1);
+
+/* ---------------- source chips ---------------- */
+let SRCS = [];
+const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>';
+// manually-added context (a call, meeting, Teams chat) — not from the email corpus
+const ICON_NOTE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const mdShort = d => { const x = new Date(d+"T00:00:00"); return (x.getMonth()+1)+"/"+x.getDate(); };
+const mdLong  = d => new Date(d+"T00:00:00").toLocaleDateString("en-US",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+function chip(s){
+  const i = SRCS.push(s) - 1;
+  const icon = s.manual ? ICON_NOTE : ICON;
+  const who  = s.manual ? "your note" : esc(s.from);
+  const pw   = s.manual ? `<span class="pw">you wrote this &mdash; your own account, not a third-party confirm</span>` : "";
+  const open = s.manual ? "click to read your note" : "click to open the email";
+  return `<button class="src${s.manual?" manual":""}" data-i="${i}">${icon}${who} &middot; ${mdShort(s.d)}<span class="pop">${pw
+    }<span class="pf">${esc(s.from)}</span><span class="pd">${esc(s.d)}${s.time?" &middot; "+esc(s.time):""}</span><span class="ps">${esc(s.subj)}</span><span class="po">${open}</span></span></button>`;
+}
+const chips = list => Array.isArray(list) && list.length ? list.map(chip).join("") : "";
+// a note you wrote marks the whole entry, not just its chip
+const isNote = list => Array.isArray(list) && list.some(s => s.manual);
+function openMail(s){
+  document.getElementById("mtag").textContent = s.manual ? "your note — you wrote this" : "source email";
+  document.getElementById("mtag").className = "m-tag" + (s.manual ? " manual" : "");
+  document.getElementById("msubj").textContent = s.subj;
+  document.getElementById("mfrom").textContent = s.from;
+  document.getElementById("mdate").textContent = mdLong(s.d) + (s.time ? " · " + s.time : "");
+  document.getElementById("mbody").textContent = s.body || "";
+  document.getElementById("ov").classList.add("on");
+}
+
+/* ---------------- left rail ---------------- */
+let query = "";
+const collapsed = new Set(["mine", ...STAGES]);
+function rail(){
+  const q = query.trim().toLowerCase();
+  const hit = p => !q || p.name.toLowerCase().includes(q) || String(p.case).toLowerCase().includes(q) || p.id.toLowerCase().includes(q);
+  const groups = [];
+  const mine = PLANS.filter(p => mineCount(p) > 0 && hit(p)).sort(byRank);
+  if (mine.length) groups.push(["On me", "mine", mine, true]);
+  for (const b of STAGES) {
+    const g = PLANS.filter(p => bucket(p) === b && hit(p)).sort(byRank);
+    if (g.length) groups.push([stage[b], b, g, false]);
+  }
+  if (!groups.length) return `<div class="rempty">No plan matches &ldquo;${esc(query)}&rdquo;.</div>`;
+  return groups.map(([name, key, list, pinned]) => {
+    const shut = !q && collapsed.has(key);
+    return `
+    <div class="rgrp ${pinned?"pin":""} ${shut?"shut":""}">
+      <button class="rh" data-g="${key}"><span class="cv">&#9654;</span><span class="nm">${name}</span><span class="c">${list.length}</span></button>
+      <div class="rbody">${list.map(p => `<button class="rlink ${current===p.id?"on":""}" data-id="${esc(p.id)}" title="${esc(p.name)}"><span class="t">${esc(p.name)}</span>${
+        p.pending ? `<span class="nu">+${p.pending}</span>` : ""}${
+        (!pinned && mineCount(p)) ? `<span class="dot">&#9679;</span>` : ""}</button>`).join("")}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------------- masthead ---------------- */
+const mineTotal = () => PLANS.reduce((n,p) => n + mineCount(p), 0);
+const pendingTotal  = () => PLANS.reduce((n,p) => n + (p.pending||0), 0);
+function navbar(){
+  const words = [["mine","On me"],["active","Active"],["escalated","Escalated"],
+    ["transitioning","Transitioning"],["converted","Converted"],["all","All"]];
+  if (pendingTotal()) words.splice(1, 0, ["new","Needs Review"]);
+  return words.map(([k,t]) => {
+    const n = PLANS.filter(p => { const f0 = filter; filter = k; const m = matches(p); filter = f0; return m; }).length;
+    return [k,t,n];
+  }).filter(([k,,n]) => n > 0 || k === "all" || k === filter)
+    .map(([k,t,n]) => `<button class="${filter===k?"on":""}" data-f="${k}">${t}<span class="n">${n}</span></button>`).join("");
+}
+function substrip(){
+  return [
+    `${PLANS.length} plans`,
+    `${BUILD.emails.toLocaleString()} emails`,
+    `${BUILD.first} &ndash; ${BUILD.last}`,
+    pendingTotal() ? `<span class="hi">${pendingTotal()} emails awaiting review</span>` : ""
+  ].filter(Boolean).join(`<span>&middot;</span>`);
+}
+
+/* ---------------- caseload ---------------- */
+const tier = p => mineCount(p) > 0 ? "dk" : (p.owed ? "cm" : "wh");
+const cap  = p => esc(p.cap || label[p.phase]);
+
+function darkCard(p){
+  const open = realOpen(p);
+  const mine = open.filter(o => o.mine), theirs = open.filter(o => !o.mine);
+  const vis = mine.slice(0, 3);
+  for (const o of theirs) { if (vis.length >= 3) break; vis.push(o); }
+  const rest = open.length - vis.length;
+  return `<button class="card dk" data-id="${esc(p.id)}">
+    <div class="row"><span class="capline"><span class="cphase">${cap(p)}</span>${parkTag(p)}</span><span style="display:flex;gap:10px;align-items:flex-start">${
+      p.pending?`<span class="newbadge">+${p.pending} to review</span>`:""}<span class="num">${mineCount(p)}<s>on you</s></span></span></div>
+    <div class="namebox"><div class="name">${esc(p.name)}</div></div>
+    <div class="case">${esc(p.case)}</div>
+    <div class="tasks">${vis.map(o => `<div class="task${o.mine?"":" theirs"}">${esc(o.task)}${o.mine?"":" &mdash; "+esc(o.who)}</div>`).join("")}${
+      rest > 0 ? `<div class="more">+${rest} more</div>` : ""}</div>
+    <div class="foot"><span>${esc(clientShort(p))}</span><span>${esc(p.cardNote || ago(p.last))}</span></div>
+  </button>`;
+}
+function creamCard(p){
+  // the numeral needs a real count -- fall back to the pill when the thread
+  // records who owes you but never itemised what
+  const n = openCount(p);
+  return `<button class="card cm" data-id="${esc(p.id)}">
+    <div class="row"><span class="capline"><span class="cphase">${cap(p)}</span>${parkTag(p)}</span><span style="display:flex;gap:10px;align-items:flex-start">${
+      p.pending?`<span class="newbadge">+${p.pending} to review</span>`:""}${
+      n ? `<span class="mark">${n}<s>owed you</s></span>` : `<span class="wait-flag">Owed to you</span>`}</span></div>
+    <div class="namebox"><div class="name">${esc(p.name)}</div></div>
+    <div class="case">${esc(p.case)}</div>
+    <div class="next">
+      <div class="lbl">Waiting on ${esc(p.owed.who)}</div>
+      <div class="what"${p.owed.also?` style="-webkit-line-clamp:3"`:""}>${esc(p.owed.what)}</div>
+      ${p.owed.also ? `<div class="also">${esc(p.owed.also)}</div>` : ""}
+    </div>
+    <div class="foot"><span>${esc(clientShort(p))}</span><span>${esc(p.cardNote || ago(p.last))}</span></div>
+  </button>`;
+}
+function whiteCard(p){
+  const quiet = openCount(p) === 0;
+  const txt = p.cardText || p.headline.split(". ").slice(0,2).join(". ");
+  return `<button class="card wh" data-id="${esc(p.id)}">
+    <div class="row"><span class="capline"><span class="cphase">${cap(p)}</span>${parkTag(p)}</span><span style="display:flex;gap:8px;align-items:center;margin-top:4px">${
+      p.pending?`<span class="newbadge" style="background:var(--coral)">+${p.pending} to review</span>`:""}<span class="${quiet?"ok-dot":"idle-dot"}"></span></span></div>
+    <div class="namebox"><div class="name">${esc(p.name)}</div></div>
+    <div class="case">${esc(p.case)}</div>
+    <div class="status">${quiet ? "<b>Nothing outstanding.</b> " : ""}${esc(txt)}</div>
+    <div class="foot"><span>${esc(clientShort(p))}</span><span>${esc(p.cardNote || ago(p.last))}</span></div>
+  </button>`;
+}
+const tierRank = { dk:0, cm:1, wh:2 };
+function caseload(){
+  const list = PLANS.filter(matches).sort((a,b) =>
+    (tierRank[tier(a)] - tierRank[tier(b)]) || (mineCount(b) - mineCount(a)) || byRank(a,b));
+  const heroLabel = { mine:"On me", new:"New activity", all:"All plans" }[filter] || stage[filter];
+  const blurb = {
+    active:"kickoff through cutover",
+    escalated:"off track &mdash; needs intervention",
+    transitioning:"live but not clean yet &mdash; still yours",
+    converted:"done &mdash; nothing outstanding",
+    mine:"open items with your name on them",
+    new:"email has arrived since the narrative was written"
+  }[filter];
+  return `
+  <div class="chead">
+    <div>
+      <h1>${esc(heroLabel)}</h1>
+      <div class="tag">${list.length} plan${list.length===1?"":"s"}${
+        blurb ? ` &mdash; ${blurb}` : ""}${
+        mineTotal() ? ` &nbsp;&middot;&nbsp; <span class="hi">${mineTotal()} open items are on you</span>` : ""}</div>
+    </div>
+    <div class="legend">
+      <span><span class="sw" style="background:var(--dark)"></span>On you</span>
+      <span><span class="sw" style="background:var(--card)"></span>Owed to you</span>
+      <span><span class="sw" style="background:var(--canvas);border:1px solid var(--hairline)"></span>All good / waiting</span>
+    </div>
+  </div>
+  <div class="cases">${list.map(p => tier(p)==="dk" ? darkCard(p) : tier(p)==="cm" ? creamCard(p) : whiteCard(p)).join("")}</div>
+  <footer><span>built ${BUILD.today}</span><span>&middot;</span><span>${BUILD.extracts} extract${BUILD.extracts>1?"s":""}</span><span>&middot;</span><span>${BUILD.emails.toLocaleString()} emails</span><span>&middot;</span><span>${BUILD.first} &ndash; ${BUILD.last}</span></footer>`;
+}
+
+/* ---------------- detail ---------------- */
+const loadsOut = p => (p.loads||[]).filter(l => l.date !== "N/A" && !l.date).length;
+function loadsBlock(p){
+  if (!p.loads || !p.loads.length)
+    return `<div class="noload">No DC status checklist appears in this thread &mdash; either the plan predates the template or it never reached the load stage.</div>`;
+  let html = `<div class="loads">`, grp = null;
+  for (const l of p.loads) {
+    if (l.group !== grp) { grp = l.group; html += `<div class="load-g">${esc(grp)}</div>`; }
+    const st = l.date === "N/A" ? "na" : (l.date ? "" : "out");
+    const val = l.date === "N/A" ? "n/a" : (l.date || "outstanding");
+    html += `<div class="load"><span class="lw">${esc(l.what)}${l.chg?`<span class="newtag ${l.chg}">${chgWord[l.chg]}</span>`:""}${l.note?`<span class="ln">${esc(l.note)}</span>`:""}</span><span class="d ${st}">${esc(val)}</span></div>`;
+  }
+  return html + "</div>";
+}
+function detail(id){
+  const p = PLANS.find(x => x.id === id);
+  const open = realOpen(p);
+  const mine = open.filter(o => o.mine), theirs = open.filter(o => !o.mine);
+  // ConvertTo-Json unwraps a one-item array into a bare object and an empty one into {}
+  const watch = Array.isArray(p.watch) ? p.watch : (p.watch && p.watch.task) ? [p.watch] : [];
+  return `
+  <button class="back" id="back">&larr; caseload</button>
+  <div class="frame">
+    <div class="dhero">
+      <div class="dtop"><span class="capline"><span class="dphase">${esc(stage[bucket(p)])} &middot; ${esc(p.kicker)}</span>${parkTag(p)}</span>
+        <span style="display:flex;gap:10px;align-items:center">${
+        mineCount(p) ? `<span class="flag">${mineCount(p)} on you</span>` : ""}
+        <button class="herolink" id="nbilink" data-nbi="${esc(p.id)}">NBI task tracker${
+          nbiMoved(p) ? `<span class="nb">${nbiMoved(p)} changed</span>` : ""} &rarr;</button></span></div>
+    </div>
+    <div class="hrow"><span class="dname">${esc(p.name)}</span><span class="dcase">${esc(p.case)}</span></div>
+    <div class="dbot">
+      <p class="dhead">${esc(p.headline)}</p>
+      <div class="facts">
+        <div class="fact"><span>Prior</span><b>${esc(p.prior)}</b></div>
+        <div class="fact"><span>Payroll</span><b>${esc(p.payroll)}</b></div>
+        <div class="fact"><span>Client</span><b>${esc(p.client)}</b></div>
+        <div class="fact"><span>Conversion mgr</span><b>${esc(p.com)}</b></div>
+        <div class="fact"><span>Go-live</span><b>${esc(p.golive)}</b></div>
+      </div>
+    </div>
+    <div class="bodyc">
+      ${p.stub ? `<div class="notice">This plan has not been summarized yet &mdash; it appeared in a later extract. Load status below is machine-read and accurate; the narrative sections are empty until reviewed.</div>` : ""}
+      ${p.pending ? `<div class="notice">${p.pending} email${p.pending>1?"s have":" has"} arrived since this narrative was written &mdash; it is behind until the plan is refreshed.</div>` : ""}
+      <div class="cols">
+        <div class="dcard${mine.length?" on":""}">
+          <div class="sech"><span class="sec-h">${mine.length ? "On you" : "Open items"}</span>${
+            open.length ? `<span class="ct${mine.length?" hot":""}">${mine.length ? `${mine.length} on you` : `${open.length} open`}</span>`
+            : watch.length ? `<span class="ct">${watch.length} watching</span>` : ""}</div>
+          ${mine.length && theirs.length ? `<div class="sec-sub">${theirs.length} more with others below</div>` : ""}
+          ${open.length ? `<div class="dtasks">${
+            mine.map(o => `<div class="dtask${isNote(o.src)?" note":""}"><div class="t">${esc(o.task)}</div><div class="n">${esc(o.note)}</div><div class="w">${esc(o.who).toUpperCase()}</div>${chips(o.src)}</div>`).join("")}${
+            theirs.map(o => `<div class="dtask theirs${isNote(o.src)?" note":""}"><div class="t">${esc(o.task)}</div><div class="n">${esc(o.note)}</div><div class="w">${esc(o.who).toUpperCase()}</div>${chips(o.src)}</div>`).join("")}</div>`
+          : `<div class="empty">Nothing outstanding.</div>`}
+          ${watch.length ? `<div class="wsec"><div class="sec-sub">Watching &mdash; live, but nobody's action right now</div><div class="dtasks">${
+            watch.map(o => `<div class="dtask theirs${isNote(o.src)?" note":""}"><div class="t">${esc(o.task)}</div><div class="n">${esc(o.note)}</div><div class="w">${esc(o.who).toUpperCase()}</div>${chips(o.src)}</div>`).join("")}</div></div>` : ""}
+        </div>
+        <div class="dcard">
+          <div class="sech"><span class="sec-h">Data loads</span>${
+            loadsOut(p) ? `<span class="ct out">${loadsOut(p)} outstanding</span>`
+            : (p.loads||[]).length ? `<span class="ct">${p.loads.length} lines &middot; all in</span>` : ""}</div>
+          ${p.loadsSrc ? `<div class="sec-sub" style="display:flex;gap:10px;align-items:center">from your DC status update &middot; ${chips([p.loadsSrc])}</div>` : ""}
+          ${loadsBlock(p)}
+        </div>
+      </div>
+      <div class="cols">
+        <div class="dcard">
+          <div class="sech"><span class="sec-h">History</span>${
+            p.history.length ? `<span class="ct">${p.history.length} milestone${p.history.length>1?"s":""}</span>` : ""}</div>
+          ${p.history.length ? `<div class="hist">${p.history.map(h => `
+            <div class="hrow2${isNote(h.src)?" note":""}"><div class="hd">${esc(h.d)}</div><div><div class="ht">${esc(h.t)}</div><div class="hn">${esc(h.n)}</div>${chips(h.src)}</div></div>`).join("")}</div>`
+          : `<div class="empty">No milestones recorded.</div>`}
+        </div>
+        <div class="dcard">
+          <div class="sech"><span class="sec-h">Decisions</span>${
+            p.decisions.length ? `<span class="ct">${p.decisions.length} standing</span>` : ""}</div>
+          ${p.decisions.length ? `<div class="dec">${p.decisions.map(d => `
+            <div class="dec-i"><div class="t">${esc(d.t)}</div><div class="n">${esc(d.n)}</div>${chips(d.src)}</div>`).join("")}</div>`
+          : `<div class="empty">No standing decisions captured in the thread.</div>`}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="threadline"><span>${p.emails} emails</span><span>&middot;</span><span>${esc(p.first)} &ndash; ${esc(p.last)}</span><span>&middot;</span><span>last activity ${ago(p.last)}</span><span>&middot;</span><span>loads as of ${esc(p.asOf || "—")}</span><span>&middot;</span><span>most active: ${esc(p.top)}</span></div>`;
+}
+
+/* ---------------- NBI task tracker ----------------
+   The 130-task master inventory (nbi tasks.txt), grouped workstream -> subsection.
+   The master list's "Strategy" group is presented as workstream 01 Conversion. */
+const NBI = [
+["Conversion",[
+ ["Strategy",[
+  "Build Fund Mapping Spreadsheet",
+  "Provide Fund Mapping Spreadsheet to Internal Team",
+  "Check for missing funds against current assets snapshot",
+  "Cross check share class for re-registered funds",
+  "Complete Re-Registration Template to Accounting (if applicable)",
+  "Confirm that all re-registered funds have instructions",
+  "Send re-reg instructions to the prior vendor",
+  "Build Source Mapping Template",
+  "Provide Source Mapping Template to Internal Team",
+  "Receive sign-off from TM/TC"]],
+ ["Base Test Data",[
+  "Test One-Time Eligibility File (check required fields)",
+  "Perform EDS validation of census data file",
+  "Deferral data checked",
+  "Missing data elements (on layout but not on data file)",
+  "Testing data",
+  "Provide feedback to file preparer"]],
+ ["Census / Indicative Data",[
+  "Conversion population loaded",
+  "EE exists on another plan with different DOB (to TC)"]],
+ ["Eligibility",[
+  "Load eligibility data",
+  "Review system data for completeness / reasonability",
+  "Check hours for eligibility loaded correctly",
+  "Ensure fulfillment tables have appropriate kit counts",
+  "Report issues back to TM and TC",
+  "Review resolve event-progression errors (auto rehire)",
+  "Turn on automated rehire logic"]],
+ ["Vesting",[
+  "Load years of service through last completed computation period",
+  "Report issues back to TM and TC",
+  "Vesting overrides",
+  "Hardcoding on participant accounts (if applicable)",
+  "Handling of vested vs. non-vested accounts (to TC)"]],
+ ["Hours",[
+  "Load hours worked since last completed computation period",
+  "Review hours loaded for completeness"]],
+ ["Contributions",[
+  "Load calendar YTD contributions by money type",
+  "Review calendar YTD contributions for completeness",
+  "Load plan YTD contributions by money type",
+  "Review plan YTD contributions for completeness",
+  "Save copies of YTD contribution data in testing folder",
+  "Compensation",
+  "Load YTD compensation fields",
+  "Review YTD comp loaded for completeness",
+  "Place copies of YTD files in testing directory"]],
+ ["Deferrals (Pre-Tax, Roth, After-Tax)",[
+  "Load percents and/or dollar amounts for each mapped source",
+  "Terminated participants with pre-tax/Roth election > 0 (to TC/TM)",
+  "Auto-escalate: ensure all defaulted ppts have auto-enroll date",
+  "Auto-enrollment data / default info",
+  "Review deferral data loaded for completeness",
+  "Load hardship suspension dates",
+  "Add automatic reinstatement code"]],
+ ["Beneficiary Data",[
+  "Beneficiary data loaded",
+  "Ensure beneficiary data loaded correctly"]],
+ ["Miscellaneous",[
+  "Load prior-year gross compensation to compensation table",
+  "Notify TM that prior-year gross comp was loaded",
+  "Handling of vested vs. non-vested accounts (to TC)",
+  "Outstanding checks / unclaimed benefits (to TC)",
+  "Provide alternate payee statuses and blocked account list (to TC)",
+  "Run and evaluate results of DS-15",
+  "Good Order Date",
+  "Go-Live Tasks Complete"]]]],
+["Payroll",[
+ ["Data Request",[
+  "Contact client / outside payroll vendor",
+  "Send preliminary layouts",
+  "Update layouts based on plan provisions",
+  "Submit to DC or Manager for cross-checking",
+  "Send data request to client / appropriate party",
+  "Weekly follow-up on data requests",
+  "Send FTP request (if applicable)"]],
+ ["Payroll Test Data",[
+  "Test payroll file expected",
+  "Test payroll file",
+  "If combined DB/DC, forward to DB data analyst",
+  "Provide feedback to file preparer",
+  "Add remittance layouts to EDS",
+  "Send remit layout to current AWD contact",
+  "Run test payroll through EDS validation",
+  "Testing data"]]]],
+["Record Keeper",[
+ ["Prior Vendor",[
+  "Review prior vendor experience",
+  "Contact prior record keeper",
+  "Obtain blackout dates (ask about tiered blackout)",
+  "Blackout start date",
+  "Liquidity issues and fees (if any exist)",
+  "Confirm re-registration allowed (if applicable)",
+  "Send wire instructions to prior trustee",
+  "Prior recordkeeper questionnaire call",
+  "Circulate PRK doc and TRS asset transfer guidelines",
+  "Vendor live record expected date",
+  "Vendor live record received date"]],
+ ["Prior Vendor Test Data",[
+  "Vendor test records expected",
+  "Test file from prior vendor",
+  "Build Informatica maps if none exist",
+  "Scrutinize loans (maturity dates, payments)",
+  "Check for unexpected funds / sources",
+  "Investment allocations reviewed",
+  "Auto-enroll data / deferral data",
+  "Loan data reviewed",
+  "BASIS",
+  "Data discovery on records",
+  "Update Fund Management Calendar",
+  "Review accuracy and update Fund Management Calendar (1 week)",
+  "RMD / installment / bene / QDRO status"]],
+ ["Investment Allocation",[
+  "Investment allocations loaded",
+  "Participants defaulted for investment allocations"]],
+ ["Loans",[
+  "Basic loan information loaded",
+  "Loans uploaded to PARIS",
+  "12-month highest outstanding balance history",
+  "If loaded from refresher test file, ensure match to final file",
+  "Ensure loan data loaded correctly",
+  "Reverse / reprocess in-house loan repayments (if necessary)"]],
+ ["Wire Procedures",[
+  "Receive wire and plan-level breakdown",
+  "Audit (between DCs and managers)",
+  "Process assets to holding account",
+  "Check assets processed to holding acct (transact_det_rem)",
+  "Send status email to appropriate parties",
+  "Cancel wire and send Accounting Request form"]],
+ ["Balances",[
+  "Receive final records",
+  "Reprocess participant account balances",
+  "Post re-registered funds (reconcile with Accounting)",
+  "Forfeiture / dummy accounts with assets (to TC)",
+  "Stock cost basis info received / loaded",
+  "NQDC cost basis (re-registered funds only)",
+  "Prepare audit package for CIT administration (pre go-live)",
+  "Defaulted participant fund movement (day 2)"]],
+ ["Basis (Hardship and Tax)",[
+  "Basis loaded",
+  "Check data loaded for completeness",
+  "If Roth source in plan, was first Roth date loaded"]],
+ ["SDAs / PCRA",[
+  "Verify transfer completed between prior vendor and Schwab",
+  "Process 1119 to reflect PCRA balance",
+  "Adjust EE investor position to takeover balance",
+  "Check and edit PARIS to reflect correct change in value",
+  "Verify EE investor number exists for all SDA/PCRA accounts"]],
+ ["Recurring Payments",[
+  "Basic recurring payment / RMD information",
+  "Load PYE 12/31 balances",
+  "Save prior year-end balances to RAD folder"]]]]];
+
+// which master tasks each DC status line feeds
+const NBI_MAP = {
+  "Account Balances":["Receive final records","Reprocess participant account balances"],
+  "Shares Reregistering":["Post re-registered funds (reconcile with Accounting)","Send re-reg instructions to the prior vendor","Confirm that all re-registered funds have instructions"],
+  "Loans":["Basic loan information loaded","Ensure loan data loaded correctly","Loan data reviewed"],
+  "Forfeitures":["Forfeiture / dummy accounts with assets (to TC)"],
+  "PCRA/SDA":["Verify transfer completed between prior vendor and Schwab","Process 1119 to reflect PCRA balance","Adjust EE investor position to takeover balance","Check and edit PARIS to reflect correct change in value","Verify EE investor number exists for all SDA/PCRA accounts"],
+  "Hardship Basis":["Basis loaded","Check data loaded for completeness"],
+  "Roth First Contrib Date":["If Roth source in plan, was first Roth date loaded"],
+  "Investment Allocations":["Investment allocations loaded","Investment allocations reviewed"],
+  "Census":["Conversion population loaded"],
+  "EE exists on another plan with diff DOB":["EE exists on another plan with different DOB (to TC)"],
+  "Eligibility":["Load eligibility data","Review system data for completeness / reasonability"],
+  "Vesting Overrides":["Vesting overrides"],
+  "Yrs of Service":["Load years of service through last completed computation period"],
+  "YTD Hours":["Load hours worked since last completed computation period","Review hours loaded for completeness"],
+  "YTD Contribs":["Load calendar YTD contributions by money type","Load plan YTD contributions by money type"],
+  "YTD Comp":["Load YTD compensation fields"],
+  "Deferrals":["Load percents and/or dollar amounts for each mapped source","Review deferral data loaded for completeness","Deferral data checked"],
+  "Auto Enroll":["Auto-enrollment data / default info","Auto-escalate: ensure all defaulted ppts have auto-enroll date","Auto-enroll data / deferral data"],
+  "Suspended ppts due to Hardship":["Load hardship suspension dates","Add automatic reinstatement code"],
+  "Beneficiary Data":["Beneficiary data loaded","Ensure beneficiary data loaded correctly"],
+  "RMD's/Recurring Payments":["Basic recurring payment / RMD information","RMD / installment / bene / QDRO status"],
+  "Outstanding Checks":["Outstanding checks / unclaimed benefits (to TC)"],
+  "Alternate payee statuses and blocked accounts":["Provide alternate payee statuses and blocked account list (to TC)"]
+};
+const NBI_SRC = {};
+for (const item in NBI_MAP) for (const t of NBI_MAP[item]) (NBI_SRC[t] = NBI_SRC[t] || []).push(item);
+
+// Resolve the master list against one plan's DC status table. Only tasks the
+// table actually speaks to survive -- a bare master task with no date and no
+// note says nothing, so it is not a row.
+function nbiFor(p){
+  const byItem = {};
+  for (const l of (p.loads||[])) byItem[l.what] = l;
+  return NBI.map(([ws, subs]) => ({
+    ws,
+    subs: subs.map(([sname, tasks]) => ({
+      name: sname,
+      tasks: tasks.map(name => {
+        const hits = (NBI_SRC[name]||[]).map(i => byItem[i]).filter(Boolean);
+        const dated = hits.find(h => h.date && h.date !== "N/A");
+        const na = !dated && hits.length && hits.every(h => h.date === "N/A");
+        const note = hits.map(h => h.note).filter(Boolean).join(" ");
+        const chg = hits.map(h => h.chg).filter(Boolean);
+        const bul = hits.flatMap(h => h.bul || []);
+        return { key: ws+"|"+sname+"|"+name, name,
+                 date: dated ? dated.date : "", na, note, bul,
+                 chg: chg.includes("added") ? "added" : (chg[0] || ""),
+                 from: hits.map(h => h.what) };
+      }).filter(t => t.date || t.na || t.note)
+    })).filter(s => s.tasks.length)
+  })).filter(w => w.subs.length);
+}
+const NBI_TOTAL = NBI.reduce((a,[,subs]) => a + subs.reduce((b,[,t]) => b + t.length, 0), 0);
+
+/* A status cell is one long run of text, but the writer usually kept a running
+   log inside it -- dated entries, semicolons, asterisk bullets. Break it back
+   apart so it reads as lines and pastes as lines. */
+function noteParts(s){
+  const tries = [/\s*;\s+/, /\s+\*\s+/, /(?=\b\d{1,2}[\/-]\d{1,2}(?:[\/-]\d{2,4})?\s*[-:]\s)/];
+  // only break on sentences once the cell is long enough that a wall of text
+  // is the actual problem
+  if (s.length > 150) tries.push(/(?<=[.!?])\s+(?=[A-Z0-9$"'\\])/);
+  for (const rx of tries) {
+    const parts = s.split(rx).map(x => x.trim()).filter(Boolean);
+    if (parts.length > 1) return parts;
+  }
+  return null;
+}
+function noteHtml(s){
+  const parts = noteParts(s);
+  return parts ? `<ul class="tlist">${parts.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : esc(s);
+}
+// plain text for the clipboard -- what you would paste into a status email.
+// the authored read is what goes out; the raw cell stays on screen only.
+function subText(name, tasks){
+  return name + "\n" + tasks.map(t => {
+    const d = t.date || (t.na ? "N/A" : "no date");
+    const lines = t.bul.length ? t.bul : (t.note ? (noteParts(t.note) || [t.note]) : []);
+    const n = lines.length ? "\n  " + lines.join("\n  ") : "";
+    return `- ${t.name} — ${d}${n}`;
+  }).join("\n");
+}
+const nbiDone = t => !!t.date || t.na;
+const chgWord = { added:"NEW", updated:"UPDATED" };
+const nbiMoved = p => { let n = 0;
+  for (const w of nbiFor(p)) for (const s of w.subs) for (const t of s.tasks) if (t.chg) n++;
+  return n; };
+
+function nbiPage(id){
+  const p = PLANS.find(x => x.id === id);
+  const data = nbiFor(p);
+  let done = 0, na = 0, total = 0, moved = 0;
+  for (const w of data) for (const s of w.subs) for (const t of s.tasks) { total++; if (t.chg) moved++; if (t.date) done++; else if (t.na) na++; }
+  const cols = `<div class="trow thead"><span>Task</span><span>Date</span><span>Note</span></div>`;
+  const body = data.map((w, i) => {
+    const n = w.subs.reduce((a,s) => a + s.tasks.length, 0);
+    return `<div class="ws">
+      <div class="wsh"><span class="no">0${i+1}</span><h2>${esc(w.ws)}</h2><span class="ct">${n} line${n>1?"s":""}</span></div>
+      ${w.subs.map(s => { const hot = s.tasks.filter(t => t.chg).length; return `<div class="sub${hot?" fresh":""}">
+        <div class="subh"><span class="nm">${esc(s.name)}</span><button class="tcopy" data-copy="${esc(subText(s.name, s.tasks))}">copy</button><span class="ct">${
+          hot ? `${hot} changed &middot; ` : ""}${s.tasks.length} line${s.tasks.length>1?"s":""}</span></div>
+        ${cols}
+        ${s.tasks.map(t => `<div class="trow ${nbiDone(t)?"":"todo"} ${t.chg?"new":""}">
+          <span class="tn">${esc(t.name)}</span>
+          <span class="td">${t.date ? `<span class="tdot"></span>${esc(t.date)}`
+            : t.na ? `<span class="tna">N/A</span>` : `<span class="tdash">&mdash;</span>`}</span>
+          <span class="tt">${t.chg?`<span class="newtag ${t.chg}">${chgWord[t.chg]}</span>`:""}${
+            t.bul.length ? `<ul class="tlist">${t.bul.map(b => `<li>${esc(b)}</li>`).join("")}</ul>` : t.note ? noteHtml(t.note) : ""}${
+            t.note ? (t.bul.length
+              ? `<details class="raw"><summary>${esc(t.from.join(", "))} &mdash; status table text</summary><div>${esc(t.note)}</div></details>`
+              : `<span class="tksrc">from &ldquo;${esc(t.from.join(", "))}&rdquo; on the DC status table &mdash; not yet read</span>`) : ""}</span>
+        </div>`).join("")}
+      </div>`; }).join("")}
+    </div>`;
+  }).join("");
+  return `
+  <button class="back" id="back" data-plan="${esc(p.id)}">&larr; ${esc(p.name)}</button>
+  <div class="frame">
+    <div class="dhero">
+      <div class="dtop"><span class="dphase">NBI &middot; Task tracker</span>${
+        moved ? `<span class="flag">${moved} changed</span>` : ""}</div>
+    </div>
+    <div class="hrow"><span class="dname">${esc(p.name)}</span><span class="dcase">${esc(p.case)}</span></div>
+    <div class="dbot">
+      <p class="dhead">${
+        total
+          ? `The ${total} master task${total>1?"s":""} this plan's DC status table speaks to${p.asOf ? `, as of ${esc(p.asOf)}` : ""}. Dates are verbatim; the notes are a read of what the table says, with the raw cell folded underneath. The other ${NBI_TOTAL-total} tasks on the master list have nothing recorded against them yet, so they are not listed.`
+          : `No DC status table has been read for this plan yet, so there is nothing to track against the ${NBI_TOTAL}-task master list.`}</p>
+      <div class="facts">
+        <div class="fact"><span>Dated</span><b>${done}</b></div>
+        <div class="fact"><span>Not applicable</span><b>${na}</b></div>
+        <div class="fact"><span>Noted, no date</span><b>${total-done-na}</b></div>
+        <div class="fact"><span>Status as of</span><b>${esc(p.asOf || "—")}</b></div>
+        <div class="fact"><span>Go-live</span><b>${esc(p.golive)}</b></div>
+      </div>
+    </div>
+    <div class="bodyc">
+      ${moved ? `<div class="tkbar"><span class="msg">${moved} line${moved>1?"s":""} moved in the latest status refresh &mdash; marked below.</span></div>`
+        : `<div class="tkbar"><span class="msg" style="color:var(--muted)">Nothing moved in the latest status refresh.</span></div>`}
+      ${body}
+    </div>
+  </div>`;
+}
+
+/* ---------------- render ---------------- */
+const main = document.getElementById("main"), railEl = document.getElementById("rail");
+const navEl = document.getElementById("navwords"), subEl = document.getElementById("substrip");
+function render(view, id){
+  current = view === "case" ? null : id;
+  SRCS = [];
+  main.innerHTML = view === "nbi" ? nbiPage(id) : view === "detail" ? detail(id) : caseload();
+  drawRail();
+  navEl.innerHTML = navbar();
+  subEl.innerHTML = substrip();
+  const mt = mineTotal(); document.getElementById("mechip").textContent = mt ? mt + (mt > 1 ? " ITEMS ON YOU" : " ITEM ON YOU") : "NOTHING ON YOU";
+  navEl.querySelectorAll("button").forEach(b => b.onclick = () => { filter = b.dataset.f; render("case"); });
+  main.scrollTop = 0;
+  pinHero();
+}
+// CSS cannot tell that a sticky element has hit its offset, and the pinned name
+// plate has to be shorter than the hero line it came from
+function pinHero(){
+  const f = main.querySelector(".frame"), h = f && f.querySelector(".hrow");
+  if (h) f.classList.toggle("stuck", h.getBoundingClientRect().top <= main.getBoundingClientRect().top + .5);
+}
+main.addEventListener("scroll", pinHero);
+function drawRail(){
+  const at = railEl.scrollTop;
+  railEl.innerHTML = rail();
+  railEl.scrollTop = at;
+  railEl.querySelectorAll(".rlink").forEach(b => b.onclick = () => render("detail", b.dataset.id));
+  railEl.querySelectorAll(".rh").forEach(b => b.onclick = () => {
+    const g = b.dataset.g;
+    collapsed.has(g) ? collapsed.delete(g) : collapsed.add(g);
+    drawRail();
+  });
+}
+main.addEventListener("click", e => {
+  const c = e.target.closest(".src");
+  if (c) { e.stopPropagation(); openMail(SRCS[+c.dataset.i]); return; }
+  const nb = e.target.closest("[data-nbi]");
+  if (nb) { e.stopPropagation(); render("nbi", nb.dataset.nbi); return; }
+  const cp = e.target.closest(".tcopy");
+  if (cp) { e.stopPropagation(); navigator.clipboard.writeText(cp.dataset.copy);
+            cp.textContent = "copied"; setTimeout(() => { cp.textContent = "copy"; }, 1200); return; }
+  const b = e.target.closest("#back");
+  if (b) { b.dataset.plan ? render("detail", b.dataset.plan) : render("case"); return; }
+  const t = e.target.closest("[data-id]");
+  if (t) render("detail", t.dataset.id);
+});
+document.getElementById("mx").onclick = () => document.getElementById("ov").classList.remove("on");
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.getElementById("ov").classList.remove("on"); });
+document.getElementById("ov").addEventListener("click", e => { if (e.target.id === "ov") e.currentTarget.classList.remove("on"); });
+document.getElementById("rsearch").oninput = e => { query = e.target.value; drawRail(); };
+render("case");
+</script>
+</body>
+</html>

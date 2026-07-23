@@ -1,0 +1,265 @@
+{
+  "Leiby's": {
+    "on": "Jul 22",
+    "drop": [
+      "Fix the Plan Sponsor Site defect",
+      "Confirm Ascensus invoices are paid"
+    ]
+  },
+
+  "Fan Duel": {
+    "phase": "closed",
+    "on": "Jul 22",
+    "clear": "*",
+    "resolved": {
+      "Resolve the file format that won't load": "Done and closed out. Nothing further owed on this plan.",
+      "Complete SFTP setup with the client": "Done and closed out. Nothing further owed on this plan."
+    }
+  },
+
+  "Cutting Edge Staffing": {
+    "on": "Jul 22",
+    "keep": ["Confirm whether alternate payee accounts"],
+    "drop": ["Add the two participants the client is documenting"],
+    "clear": [
+      "Say where the deferral mapping data came from",
+      "Explain why participants were loaded in default",
+      "Reconcile auto-enrolment setup against the prior recordkeeper",
+      "Produce a report of the deferral data",
+      "Confirm the enrollment kit queue audit"
+    ],
+    "resolved": {
+      "Say where the deferral mapping data came from": "Answered — Tawnya produced the emails backing up where the mapping came from and how default status was decided.",
+      "Explain why participants were loaded in default": "Answered with Tawnya's emails. It also confirmed a real error: some participants were loaded in default who should not have been, which was a mistake on Joel's side. Prod Support is correcting it, changing Y to N.",
+      "Reconcile auto-enrolment setup against the prior recordkeeper": "Proven in Tawnya's emails and confirmed with the client on several occasions, very clearly. The prior 3% EACA setup and the single intended change — the 12-month escalation wait — both hold up.",
+      "Produce a report of the deferral data": "Shared with Earl and Stacey, who know what to do with the data from here.",
+      "Confirm the enrollment kit queue audit": "Numbers confirmed back to Paul in a Teams message."
+    }
+  },
+
+  "COCC": {
+    "on": "Jul 22",
+    "keep": [
+      "Document the correction process",
+      "Settle who assigns the in-service versus retirement source"
+    ],
+    "watch": [
+      "Get Annette the call she has asked for",
+      "Resolve the rates of return question",
+      "Confirm whether Retirement Account EE money was partly correct",
+      "Approve Dayforce production deployment for NQ98507",
+      "Resend 518203 test file without the paid-off loan payments",
+      "Verify loan payoffs appear on the reverse feed to Dayforce",
+      "Confirm 2026 deferred comp enrollments are correct"
+    ]
+  },
+
+  "ISGRP - Denver Intl": {
+    "on": "Jul 22",
+    "watch": [
+      "Train the client on the control total form",
+      "Walk Seth through funding and error handling",
+      "Confirm e-delivery has been activated",
+      "Resolve rehire date = hire date and gender code"
+    ],
+    "keep": ["Hand off to PIC once two payroll runs pass clean"],
+    "clear": [
+      "Find out why the EDS layout updates were not saved",
+      "Clear the two errored files in One Payroll",
+      "Report the pay period and check date on both files",
+      "Send the 7/21 check date file to load and fund"
+    ],
+    "resolved": {
+      "Find out why the EDS layout updates were not saved": "Run down and closed out.",
+      "Clear the two errored files in One Payroll": "Both files cleared when the payroll was processed — the 7/16 and 7/21 errored loads are no longer sitting in One Payroll.",
+      "Report the pay period and check date on both files": "Sorted on a call.",
+      "Send the 7/21 check date file to load and fund once Seth confirms totals": "Seth confirmed the control totals and the file went to load and fund."
+    }
+  },
+
+  "Bonnier": {
+    "on": "Jul 22",
+    "keep": ["Confirm whether any installment payments exist"],
+    "watch": [
+      "Take SPDs off hold",
+      "Send the conversion summary report"
+    ],
+    "clear": ["Fix eligibility dates for participants with term dates"],
+    "resolved": {
+      "Fix eligibility dates for participants with term dates": "Fixed on a call. The participants whose eligibility dates fell after their termination dates are corrected — see the Eligibility line on the DC status table for the client-dates decision behind it."
+    }
+  },
+
+  "TMG": {
+    "phase": "live",
+    "on": "Jul 22",
+    "watch": ["Settle whether an annual census"],
+    "clear": [
+      "Determine why ~20 participants were missed",
+      "Correct the outstanding participant vesting records",
+      "Review the elapsed-time vs hours process"
+    ],
+    "resolved": {
+      "Determine why ~20 participants were missed": "Cause found: those participants had anniversary dates falling in a narrow window around Joe Monaco's change to the vesting logic, so they advanced before the new logic was in place. Not a systemic gap.",
+      "Correct the outstanding participant vesting records": "Affected participants identified and their outstanding vesting records corrected. Testing confirmed they are now credited with the additional year of service going forward.",
+      "Review the elapsed-time vs hours process": "Reviewed end to end with Earl and Stacy. Down to timing and delayed updates, not an ongoing process failure."
+    }
+  },
+
+  "Havern": {
+    "on": "Jul 22",
+    "keep": ["Re-send Dave the Plan Sponsor site link"],
+    "clear": [
+      "Confirm outbound deferral and loan files are reaching Rippling",
+      "Get inbound files visible in One Payroll"
+    ],
+    "resolved": {
+      "Confirm outbound deferral and loan files are reaching Rippling": "Reassigned — this is payroll's responsibility now, not yours.",
+      "Get inbound files visible in One Payroll": "Files loaded and made available. Sarah confirmed over Teams."
+    }
+  },
+
+  "Redwood Cardinal": {
+    "on": "Jul 22",
+    "clear": ["Provide wire confirmation"],
+    "resolved": {
+      "Provide wire confirmation": "Confirmation sent to Nate. Closed by hand — the email was never captured in the extract, so there is no source chip behind this one."
+    }
+  },
+
+  "Vera": {
+    "on": "Jul 22",
+    "clear": ["Identify what DAPXX maps to"],
+    "resolved": {
+      "Identify what DAPXX maps to": "David confirmed the mapping and the residual wire can be spread. Resolution came over email or Teams rather than the extract."
+    }
+  },
+
+  "Pella Carolina": {
+    "on": "Jul 22",
+    "clear": ["Confirm ADP received the SFTP test file"],
+    "resolved": {
+      "Confirm ADP received the SFTP test file": "FTP is working. Confirmed over Teams — the long-running unconfirmed transmission is closed."
+    }
+  },
+
+  "Crispy": {
+    "on": "Jul 22",
+    "clear": [
+      "Load loan numbers at UKG so live files can begin",
+      "Settle the rehire process"
+    ],
+    "resolved": {
+      "Load loan numbers at UKG so live files can begin": "Done and confirmed in a meeting. Also out of your ownership now.",
+      "Settle the rehire process": "Reassigned — belongs to Outsourcing / the ongoing service team."
+    }
+  },
+
+  "Mainline": {
+    "on": "Jul 22",
+    "clear": ["Complete the payroll vendor change"],
+    "resolved": {
+      "Complete the payroll vendor change": "Reassigned — the ongoing account team owns this."
+    }
+  },
+
+  "Evexias": {
+    "on": "Jul 22",
+    "clear": ["Decide whether to accept daily payroll files"],
+    "resolved": {
+      "Decide whether to accept daily payroll files": "Reassigned — the accept-or-reject call on ExponentHR's daily files sits with Account Management."
+    }
+  },
+
+  "Episcopal": {
+    "on": "Jul 22",
+    "clear": [
+      "Resolve One Payroll files hanging in validation",
+      "Load the last pay period's data"
+    ],
+    "resolved": {
+      "Resolve One Payroll files hanging in validation": "Files processed successfully. Confirmed over Teams. Closed by someone else, but closed.",
+      "Load the last pay period's data": "Loaded with the same run that cleared the validation backlog."
+    }
+  },
+
+  "Thunder Valley": {
+    "on": "Jul 22",
+    "clear": ["Check whether other website features were left disabled"],
+    "resolved": {
+      "Check whether other website features were left disabled": "Reviewed in a meeting. The NQ History Page was the only thing left disabled at setup — nothing else found."
+    }
+  },
+
+  "AWSNA": {
+    "on": "Jul 22",
+    "clear": ["Request compensation data from the client"],
+    "resolved": {
+      "Request compensation data from the client": "Reassigned — Account Management owns the ask. The data still is not in our possession, so compliance testing stays blocked until it arrives."
+    }
+  },
+
+  "Denali - Wallace": {
+    "on": "Jul 22",
+    "clear": [
+      "Update Roth basis for one participant",
+      "Load the missing loan payments and reamortize"
+    ],
+    "resolved": {
+      "Update Roth basis for one participant": "Done and confirmed in a meeting.",
+      "Load the missing loan payments and reamortize": "Both halves done — payments recovered and the loans reamortized. Confirmed in a meeting."
+    }
+  },
+
+  "AVL": {
+    "on": "Jul 22",
+    "clear": ["Implement the EPCRS self-correction"],
+    "resolved": {
+      "Implement the EPCRS self-correction": "Reassigned — Account Management owns the correction now that WTW's signed memo is back."
+    }
+  },
+
+  "Stamats": {
+    "on": "Jul 22",
+    "clear": ["Reconcile the residual wire allocation"],
+    "resolved": {
+      "Reconcile the residual wire allocation": "Brittany completed the residual wire. Documented in a Teams conversation rather than email."
+    }
+  },
+
+  "Sibley": {
+    "on": "Jul 22",
+    "clear": [
+      "Resolve the RMD prior-year balance discrepancy",
+      "Determine whether 2025 distributions reduce the RMD due"
+    ],
+    "resolved": {
+      "Resolve the RMD prior-year balance discrepancy": "Confirmed resolved with Chris over Teams, despite Principal having nothing further to send.",
+      "Determine whether 2025 distributions reduce the RMD due": "Reviewed and settled with Chris in a meeting."
+    }
+  },
+
+  "Health Advocates": {
+    "on": "Jul 22",
+    "clear": ["Correct the doubled YTD hours"],
+    "resolved": {
+      "Correct the doubled YTD hours": "Brittany made the correction. Fixed internally off the indicative tabs, without going back to the client."
+    }
+  },
+
+  "PAQ": {
+    "on": "Jul 22",
+    "clear": ["Correct the mis-dated payroll upload"],
+    "resolved": {
+      "Correct the mis-dated payroll upload": "Cleared without action — the plan never progressed, so the wrong pay-period end date has nothing riding on it."
+    }
+  },
+
+  "Church Farm": {
+    "on": "Jul 22",
+    "clear": ["Confirm the first automated ADP file landed"],
+    "resolved": {
+      "Confirm the first automated ADP file landed": "The file landed successfully."
+    }
+  }
+}

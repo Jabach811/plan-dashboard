@@ -1,0 +1,20 @@
+# raw email data -- full unredacted Outlook exports and the deduped corpus
+# built from them. Far more sensitive than anything the dashboard itself
+# surfaces, so this stays off the public repo regardless of the page being public.
+extracts/
+data/corpus.csv
+
+# pre-change snapshots, not needed anywhere but locally
+.backups/
+
+# build logs -- local diagnostics only
+logs/
+
+# design explorations and the standalone NBI worked example -- not part of
+# what build.ps1 produces, and the worked example embeds a real client's data
+studies/
+nbi-tracker/
+
+# local tool settings
+.claude/
+templates/retired/
