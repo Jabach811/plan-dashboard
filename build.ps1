@@ -692,7 +692,7 @@ try {
     $ErrorActionPreference = 'Continue'
     $porcelain = git status --porcelain
     if ($LASTEXITCODE -eq 0 -and $porcelain) {
-        git add -A -- ':!extracts' ':!data/corpus.csv' ':!.backups' ':!logs' ':!studies' ':!nbi-tracker' ':!.claude' | Out-Null
+        git add -A | Out-Null
         $staged = git status --porcelain
         if ($staged) {
             git commit -q -m "Refresh dashboard $(Get-Date -Format 'yyyy-MM-dd HH:mm')" | Out-Null

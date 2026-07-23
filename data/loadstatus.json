@@ -420,12 +420,8 @@
                            }
                },
     "Leiby\u0027s":  {
-                         "asOf":  "2026-06-17",
+                         "asOf":  "2026-07-23",
                          "items":  {
-                                       "Census":  {
-                                                      "note":  "and defaulted investment elections have been loaded up. There are 76 participants loaded and in default for elections. There are 5 participants who are missing SSNs on the file and did not load. The file is linked in NBI under the census task section. RecordKeeper: Task Ascensus Comments",
-                                                      "date":  ""
-                                                  },
                                        "Account Balances":  {
                                                                 "note":  "",
                                                                 "date":  ""
@@ -462,6 +458,10 @@
                                                                       "note":  "",
                                                                       "date":  "N/A"
                                                                   },
+                                       "Census":  {
+                                                      "note":  "76 PPTS LOADED AND DEFAULED FOR INVESTMENT ELECTIONS 5 PPTS DID NOT LOAD DUE TO MISSING SSN \\\\Yydafs-data1\\department\\CIT\\ACCOUNTS\\2026\\ExcelWise PEP (Leiby\u0027s Dairy) - QK63283-00112\\Data Conversion\\Contract\\Layouts\\QK63283 ExcelWise",
+                                                      "date":  "07/23/2026"
+                                                  },
                                        "Deferrals":  {
                                                          "note":  "",
                                                          "date":  ""
@@ -517,10 +517,10 @@
                                    },
                          "src":  {
                                      "from":  "Abacherli, Joel",
-                                     "d":  "2026-06-17",
-                                     "time":  "13:00",
+                                     "d":  "2026-07-23",
+                                     "time":  "09:53",
                                      "subj":  "Leiby\u0027s Dairy - QK63283/00112 - DC status update",
-                                     "body":  "Census and defaulted investment elections have been loaded up. There are 76 participants loaded and in default for elections. There are 5 participants who are missing SSNs on the file and did not load. The file is linked in NBI under the census task section.\n\nRecordKeeper:\n\nTask Ascensus Comments\n\nAccount Balances\n\nShares Reregistering\n\nLoans\n\nFortfeitures\n\nPCRA/SDA\n\nHardship Basis\n\nRoth First Contrib Date\n\nRMD\u0027s/Recurring Payments\n\nInvestment Allocations N/A\n\nConversion:\n\nTask Ascensus Comments\n\nCensus 06/17/2026 Ascensus, all locations:76 PPTS LOADED AND DEFAULED FOR INVESTMENT ELECTIONS\n\n5 PPTS DID NOT LOAD DUE TO MISSING SSN\n\n\\\\Yydafs-data1\\department\\CIT\\ACCOUNTS\\2026\\ExcelWise PEP (Leiby\u0027s Dairy) - QK63283-00112\\Data Conversion\\Contract\\Layouts\\QK63283 ExcelWise Census Template (limited access).xlsx\n\nDeferrals\n\nAuto Enroll\n\nOutstanding Checks\n\nEligibility\n\nYrs of Service\n\nVesting Overrides\n\nYTD Hours\n\nBeneficiary Data\n\nEE exists on another plan with diff DOB N/A\n\nSuspended ppts due to Hardship\n\nYTD Contribs\n\nYTD Comp\n\nAlternate payee statuses and blocked accounts\n\nFor additional information on the status of DC tasks not contained in this email, please see DC Action Plan in NBI",
+                                     "body":  "5 ppts with missing SSNs loaded and elections loaded.\n\nRecordKeeper:\n\nTask Ascensus Comments\nAccount Balances\nShares Reregistering\nLoans\nFortfeitures\nPCRA/SDA\nHardship Basis\nRoth First Contrib Date\nRMD\u0027s/Recurring Payments\nInvestment Allocations N/A\n\nConversion:\n\nTask Ascensus Comments\nCensus 07/23/2026 Ascensus, all locations:76 PPTS LOADED AND DEFAULED FOR INVESTMENT ELECTIONS\n5 PPTS DID NOT LOAD DUE TO MISSING SSN\n\\\\Yydafs-data1\\department\\CIT\\ACCOUNTS\\2026\\ExcelWise PEP (Leiby\u0027s Dairy) - QK63283-00112\\Data Conversion\\Contract\\Layouts\\QK63283 ExcelWise Census Template (limited access).xlsx\n\n**5 ppts who had missing SSNs loaded and Investment elections defaulted.\n\nDeferrals\nAuto Enroll\nOutstanding Checks\nEligibility\nYrs of Service\nVesting Overrides\nYTD Hours\nBeneficiary Data\nEE exists on another plan with diff DOB N/A\nSuspended ppts due to Hardship\nYTD Contribs\nYTD Comp\nAlternate payee statuses and blocked accounts\n\nFor additional information on the status of DC tasks not contained in this email, please see DC Action Plan in NBI",
                                      "self":  false
                                  }
                      },
